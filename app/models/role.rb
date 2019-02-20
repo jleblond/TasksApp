@@ -10,4 +10,6 @@
 
 class Role < ActiveRecord::Base
   attr_accessible :role_name
+
+  validates :role_name, presence: true, length: {maximum: 50}, uniqueness: { case_sensitive: false }
 end

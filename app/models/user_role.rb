@@ -1,17 +1,20 @@
 # == Schema Information
 #
-# Table name: assignations
+# Table name: user_roles
 #
 #  id         :integer          not null, primary key
-#  task_id    :integer
 #  user_id    :integer
+#  role_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Assignation < ActiveRecord::Base
-  attr_accessible :task_id, :user_id
+class UserRole < ActiveRecord::Base
+  attr_accessible :role_id, :user_id
 
-  validates :task_id, presence: true
+  belongs_to :
+
   validates :user_id, presence: true
+  validates :role_id, presence: true
+
 end

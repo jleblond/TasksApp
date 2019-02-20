@@ -12,4 +12,8 @@
 
 class Notification < ActiveRecord::Base
   attr_accessible :description, :read, :user_id
+
+  validates :user_id, presence: true
+  validates :description, presence: true, length: { maximum: 200 }
+  validates :read, presence: true
 end

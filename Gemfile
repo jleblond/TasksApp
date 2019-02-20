@@ -15,6 +15,8 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'libv8', '3.16.14.3'
 
+gem 'devise'
+
 # gem 'bcrypt-ruby', '3.0.1'
 # gem 'faker', '1.0.1'  #populate data
 
