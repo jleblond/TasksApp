@@ -13,8 +13,8 @@
 class Comment < ActiveRecord::Base
   attr_accessible :task_id, :text, :user_id
 
-  belongs_to :user
   belongs_to :task
+  belongs_to :user
 
   validates :task_id, presence: true
   validates :user_id, presence: true

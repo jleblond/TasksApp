@@ -21,29 +21,26 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-=begin
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-=end
 
   # Setup accessible (or protected) attributes for your model
-  # attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :title, :body
 
   attr_accessible :email, :name
+
+  has_many :user_roles
+  has_many :roles, through: :user_roles
 
   has_many :tasks_as_author, class_name: "Task", foreign_key: :author_id
 
   has_many :assignations
   has_many :tasks_assigned, through: :assignations, source: :task
 
-  has_many :user_roles
-  has_many :roles, through: :user_roles
-
   has_many :comments
 
   has_many :notifications
-
 
 
   validates :name, presence: true, length: { maximum: 50 }
