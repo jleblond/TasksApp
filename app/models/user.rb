@@ -33,12 +33,16 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name
 
   has_many :tasks_as_author, class_name: "Task", foreign_key: :author_id
+
   has_many :assignations
+  has_many :tasks_assigned, through: :assignations, source: :task
 
   has_many :user_roles
   has_many :roles, through: :user_roles
 
   has_many :comments
+
+  has_many :notifications
 
 
 

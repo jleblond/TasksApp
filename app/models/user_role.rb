@@ -12,7 +12,8 @@
 class UserRole < ActiveRecord::Base
   attr_accessible :role_id, :user_id
 
-  belongs_to :
+  belongs_to :user
+  belongs_to :role
 
   validates :user_id, presence: true
   validates :role_id, presence: true
