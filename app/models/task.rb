@@ -17,7 +17,7 @@
 class Task < ActiveRecord::Base
   attr_accessible :author_id, :category_id, :description, :due_date, :start_date, :status, :task_name
 
-  # belongs_to :user, class_name: 'User', foreign_key: :
+  belongs_to :user, class_name: 'User', foreign_key: "author_id"
 
   validates :task_name, presence: true, length: { maximum: 50 }
   validates :due_date, presence: true
