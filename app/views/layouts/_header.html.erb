@@ -1,0 +1,22 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home", root_path %></li>
+
+          <% if signed_in? %>
+              signed i
+              <%= link_to "Log out", destroy_user_session_path %>
+          <% else %>
+              <%= link_to "Log in", new_session_path(:user) %><br />
+
+
+
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
