@@ -17,11 +17,13 @@
 class Task < ActiveRecord::Base
   attr_accessible :author_id, :category_id, :description, :due_date, :start_date, :status, :task_name
 
+  belongs_to :category, class_name: 'TaskCategory'
+
+  belongs_to :author, class_name: 'User', foreign_key: "author_id"
+
   has_many :assignations
   has_many :users_assigned, through: :assignations, source: :user
 
-  belongs_to :category, class_name: 'TaskCategory'
-  belongs_to :author, class_name: 'User', foreign_key: "author_id"
   has_many :comments
 
   # validates :task_name, presence: true, length: { maximum: 50 }
