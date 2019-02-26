@@ -1,0 +1,21 @@
+<h2>New Task</h2>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(Task.new, :url => { :action => "create" })  do |f| %>
+
+        <%= f.label :task_name, "Task Name" %>
+        <%= f.text_field :task_name %>
+
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+
+
+
+        <%= f.submit "Create a new Task", class: "btn btn-large btn-primary" %>
+        <% end %>
+  </div>
+</div>
+
+
+        attr_accessible :author_id, :category_id, :description, :due_date, :start_date, :status, :task_name

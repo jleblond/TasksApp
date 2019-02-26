@@ -8,6 +8,7 @@ TasksApp::Application.routes.draw do
   end
 
   resources :users
+  resources :tasks
   resources :notifications
 
   root to: 'home#index'
