@@ -7,6 +7,7 @@ TasksApp::Application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  resources :users
   resources :notifications
 
   root to: 'home#index'
