@@ -10,6 +10,7 @@ TasksApp::Application.routes.draw do
   resources :users
   resources :tasks
   resources :notifications
+  resources :task_categories
 
   root to: 'home#index'
 

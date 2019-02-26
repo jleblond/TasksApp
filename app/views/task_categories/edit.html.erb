@@ -1,0 +1,17 @@
+<h2>Edit Task Category</h2>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@task_cat)  do |f| %>
+
+        <%= f.label :category, "Task Category" %>
+        <%= f.text_field :category, placeholder: @task_cat.category %>
+
+
+        <%= f.submit "Edit task Category", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+     <%= link_to "delete", @task_cat, method: :delete,
+            data: { confirm: "You sure?" } %>
+  </div>
+</div>

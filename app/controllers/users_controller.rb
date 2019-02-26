@@ -28,8 +28,6 @@ class UsersController < ApplicationController
     user == current_user
   end
 
-  def role_admin?
-    current_user.admin?
-  end
+
 
 end

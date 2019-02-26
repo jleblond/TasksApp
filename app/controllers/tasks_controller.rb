@@ -9,7 +9,7 @@ class TasksController < ApplicationController
   end
 
   def new
-    @users = User.all
+    @users = User.all # used in the form to select users to whom the task will be assigned to
   end
 
   def create

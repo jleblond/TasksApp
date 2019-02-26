@@ -1,0 +1,15 @@
+<h2>Task Categories</h2>
+(Number of task categories: <%= @task_categories.count
+%>)
+</br> </br>
+<%= link_to "+ New Task Category", new_task_category_path %>
+
+<ul class="task-categories">
+  <% @task_categories.each do |c| %>
+      <li>
+        <%=   c.id %>
+        <%=   c.category %>
+        <%= link_to "edit",  edit_task_category_path(c) %>
+      </li>
+  <% end %>
+</ul>
