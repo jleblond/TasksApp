@@ -6,5 +6,10 @@ class CreateAssignations < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :assignations, [:task_id, :user_id], unique: true
+
   end
+
+
 end

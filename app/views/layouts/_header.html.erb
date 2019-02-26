@@ -8,15 +8,28 @@
 
           <% if signed_in? %>
               <li><%= link_to "My Account", current_user  %></li>
-              <li><%= link_to "Tasks",  tasks_path %></li>
               <li><%= link_to "Log out", destroy_user_session_path %></li>
           <% else %>
               <li><%= link_to "Log in", new_session_path(:user) %></li>
 
-
-
           <% end %>
         </ul>
+
+
+        <% if signed_in? %>
+            <ul>
+              <li> <%= link_to "My Tasks",  tasks_path %> </li>
+              <li> <%= link_to "+ New Task",  new_task_path %> </li>
+            </ul>
+        <% end %>
+
+        <% if current_user.admin? %>
+            <ul>
+              ADMIN:
+              <li> <%= link_to "All Users",  users_path %> </li>
+              <li> <%= link_to "Manage Tasks",  tasks_path %> </li>
+            </ul>
+        <% end %>
       </nav>
     </div>
   </div>

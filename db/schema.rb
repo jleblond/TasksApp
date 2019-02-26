@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20190220215702) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "assignations", ["task_id", "user_id"], :name => "index_assignations_on_task_id_and_user_id", :unique => true
+
   create_table "comments", :force => true do |t|
     t.integer  "task_id"
     t.integer  "user_id"

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, only: [:index]
+  # before_filter :authenticate_user!, only: [:index]
   before_filter :correct_user, only: [:show, :edit, :update]
-  # before_filter :admin  only: [ :show, :edit, :update, :destroy]
+  before_filter :role_admin?,  only: [ :index, :show, :edit, :update, :destroy]
 
 
   def index
@@ -26,6 +26,10 @@ class UsersController < ApplicationController
 
   def current_user?(user)
     user == current_user
+  end
+
+  def role_admin?
+    current_user.admin?
   end
 
 end

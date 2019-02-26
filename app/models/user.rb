@@ -49,4 +49,9 @@ class User < ActiveRecord::Base
 
   default_scope order: 'users.name ASC'
 
+  def admin?
+    @admin_id = Role.find_by_role_name("admin")
+    self.roles.exists?(@admin_id)
+  end
+
 end
