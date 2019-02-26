@@ -23,6 +23,7 @@ class Task < ActiveRecord::Base
 
   has_many :assignations
   has_many :users_assigned, through: :assignations, source: :user
+  accepts_nested_attributes_for :users_assigned
 
   has_many :comments
 

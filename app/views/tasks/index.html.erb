@@ -1,10 +1,13 @@
 <h2>Tasks Assigned</h2>
+(Number of assignations: <%= @tasks_assigned.count
+%>)
+
+<%  @b %>
 <ul class="tasks">
   <% @tasks_assigned.each do |t| %>
       <li>
-            t.task_name
-            t.id
-
+        <%=   t.id %>
+        <%=   t.task_name %>
       </li>
   <% end %>
 </ul>
