@@ -1,11 +1,16 @@
 <aside class="span4">
   <section>
     <h1>
-
-      <%= @user.name %>
+      Account Information
     </h1>
   </section>
   <section>
 
+    Name : <%= @user.name %>
+    Email : <%= @user.email %>
+
   </section>
+
+  <%= link_to "edit",  edit_user_path(@user) %>
+
 </aside>

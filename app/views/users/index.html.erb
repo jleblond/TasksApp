@@ -1,6 +1,7 @@
 <h2>List of Users</h2>
 (Number of users: <%= @users.count
 %>)
+<br></br>
 
 <ul class="users">
   <% @users.each do |u| %>
@@ -8,5 +9,7 @@
         <%=   u.id %>
         <%=   u.name %>
       </li>
+      <%= link_to "show", user_path(u)  %>
+
   <% end %>
 </ul>
