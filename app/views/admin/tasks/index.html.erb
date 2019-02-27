@@ -1,8 +1,8 @@
- <h2>Manage All Tasks</h2>
- Number of Tasks: <%= @tasks.count %>
+<h2>Manage All Tasks</h2>
+Number of Tasks: <%= @tasks.count %>
 
- <br></br>
- <%= link_to "+ New Task",  new_task_path %>
+<br></br>
+<%= link_to "+ New Task",  new_task_path %>
 
 <ul class="tasks">
   <% @tasks.each do |t| %>
@@ -12,4 +12,3 @@
       </li>
   <% end %>
 </ul>
-

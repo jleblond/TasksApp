@@ -9,7 +9,7 @@ TasksApp::Application.routes.draw do
 
   resources :users
   resources :tasks do
-    # resources :comments
+     resources :comments, controller: 'tasks/comments'
   end
   resources :notifications
 
