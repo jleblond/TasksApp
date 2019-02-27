@@ -1,0 +1,11 @@
+ <h2>Manage All Tasks</h2>
+ Number of Tasks: <%= @tasks.count %>
+<ul class="tasks">
+  <% @tasks.each do |t| %>
+      <li>
+        <%=   t.id %>
+        <%=   t.task_name %>
+      </li>
+  <% end %>
+</ul>
+

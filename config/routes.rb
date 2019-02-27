@@ -10,7 +10,13 @@ TasksApp::Application.routes.draw do
   resources :users
   resources :tasks
   resources :notifications
-  resources :task_categories
+
+
+  namespace :admin do
+    resources :users
+    resources :task_categories
+    resources :tasks
+  end
 
   root to: 'home#index'
 

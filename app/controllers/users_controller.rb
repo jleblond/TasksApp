@@ -1,13 +1,7 @@
 class UsersController < ApplicationController
   # before_filter :authenticate_user!, only: [:index]
   before_filter :correct_user, only: [:show, :edit, :update]
-  before_filter :role_admin?,  only: [ :index, :show, :edit, :update, :destroy]
 
-
-  def index
-    @users = User.all
-
-  end
 
   def show
 

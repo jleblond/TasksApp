@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
     current_user.admin?
   end
 
+=begin
+  def dt_form_to_db params
+    date_time = params[:year]
+  end
+=end
+
 end

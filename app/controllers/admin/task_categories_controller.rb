@@ -1,4 +1,4 @@
-class TaskCategoriesController < ApplicationController
+class Admin::TaskCategoriesController < ApplicationController
   before_filter :role_admin?
 
   def index
@@ -15,31 +15,31 @@ class TaskCategoriesController < ApplicationController
 
     if @category
       flash[:success] = "Task Category created!"
-      redirect_to(task_categories_path)
+      redirect_to(admin_task_categories_path)
     else
-      redirect_to(new_task_category_path)
+      redirect_to(new_admin_task_category_path)
     end
 
   end
 
   def edit
-    @task_cat = TaskCategory.find(params[:id])
+   @task_category = TaskCategory.find(params[:id])
 
   end
 
   def update
-    @task_cat = TaskCategory.find(params[:id])
-    if @task_cat.update_attributes(params[:task_category])
+    @task_category = TaskCategory.find(params[:id])
+    if @task_category.update_attributes(params[:task_category])
       flash[:success] = "Category updated"
-      redirect_to(task_categories_path)
+      redirect_to(admin_task_categories_path)
     else
-      redirect_to(edit_task_category_path)
+      redirect_to(edit_admin_task_category_path)
     end
   end
 
   def destroy
     TaskCategory.find(params[:id]).destroy
     flash[:success] = "Category deleted"
-    redirect_to(task_categories_path)
+    redirect_to(admin_task_categories_path)
   end
 end

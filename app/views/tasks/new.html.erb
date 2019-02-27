@@ -17,6 +17,14 @@
         <% end %>
 
 
+            <%= f.label :category_id, "Task Category" %><br>
+            <%= f.collection_select :category_id, @task_categories, :id, :category, include_blank: true %>
+
+        <%= f.label :start_date, "Start Date (optional)" %>
+        <%= select_datetime nil, :prefix => :start_dt, :include_blank => true %>
+        <%= f.label :due_dt, "Due Date" %>
+        <%= select_datetime Date.today, :prefix => :due_dt %>
+
         <%= f.submit "Create a new Task", class: "btn btn-large btn-primary" %>
         <% end %>
   </div>
