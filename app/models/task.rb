@@ -17,7 +17,7 @@
 class Task < ActiveRecord::Base
   attr_accessible :author_id, :category_id, :description, :due_date, :start_date, :status, :task_name
 
-  belongs_to :category, class_name: 'TaskCategory'
+  belongs_to :category, class_name: 'TaskCategory', foreign_key: "category_id"
 
   belongs_to :author, class_name: 'User', foreign_key: "author_id"
 

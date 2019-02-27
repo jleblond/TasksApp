@@ -13,6 +13,7 @@
       <li>
         <%=   t.id %>
         <%=   t.task_name %>
+        <%= link_to "show",  task_path(t) %>
       </li>
   <% end %>
 </ul>

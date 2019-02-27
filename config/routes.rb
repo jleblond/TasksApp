@@ -8,7 +8,9 @@ TasksApp::Application.routes.draw do
   end
 
   resources :users
-  resources :tasks
+  resources :tasks do
+    # resources :comments
+  end
   resources :notifications
 
 

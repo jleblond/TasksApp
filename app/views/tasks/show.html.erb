@@ -1,0 +1,35 @@
+<h2>Task: <%=  @task.task_name %> </h2>
+
+<div class="row">
+  <div class="span6 offset3">
+    TASK: <%=  @task.task_name  %>
+    Created by: <%=  @task.author.name %> <%=  @task.author.email %>
+    Description: <%=     @task.description  %>
+
+    Category:
+    <%= if @task.category.present?
+            @task.category.category
+        end
+    %>
+
+
+    <ul class="users-assigned">
+      Assigned to:
+      <% @task.users_assigned.each do |u| %>
+          <li>
+            <%=   u.id %>
+            <%=   u.name %>
+            <%=   u.email %>
+          </li>
+      <% end %>
+    </ul>
+    Start Date: <%=     @task.start_date.to_s  %>
+    DUE DATE: <%=    @task.due_date.to_s  %>
+
+
+
+
+
+
+  </div>
+ </div>

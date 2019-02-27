@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     @due_date = datetime_from_form(params[:due_dt])
     params[:task][:due_date]= @due_date
     @start_date = datetime_from_form(params[:start_dt])
-    params[:task][:start_dt]
+    params[:task][:start_date] = @start_date
 
 
     @task = current_user.tasks_as_author.build(params[:task])
@@ -35,6 +35,15 @@ class TasksController < ApplicationController
       redirect_to(new_tasks_path)
     end
 
+  end
+
+  def show
+    @task= Task.find(params[:id])
+
+  end
+
+  def edit
+    @task= Task.find(params[:id])
   end
 
 
