@@ -3,8 +3,9 @@
 
 en:
   hello: "Hello world"
+
+
   number_of_tasks: "Number of tasks"
   filter_titles:
-    assigned: all assigned
-    authored: all authored
-    admin:
+    assigned: Tasks assigned
+    authored: Tasks authored

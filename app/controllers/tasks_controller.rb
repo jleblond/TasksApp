@@ -2,14 +2,15 @@ class TasksController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-
-
     @tasks_assigned = current_user.tasks_assigned
     @tasks_created = current_user.tasks_as_author
 
-    if role_admin?
-      @tasks_all = Task.all
+
+    @tasks = @tasks_assigned
+    if params[:filter] == "authored"
+       @tasks = @tasks_created
     end
+
   end
 
   def new
@@ -18,8 +19,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    params[:due_dt]
-    params[:start_dt]
+    @due_date = datetime_from_form(params[:due_dt])
+    params[:task][:due_date]= @due_date
+    @start_date = datetime_from_form(params[:start_dt])
+    params[:task][:start_dt]
 
 
     @task = current_user.tasks_as_author.build(params[:task])
@@ -27,7 +30,7 @@ class TasksController < ApplicationController
     if @task.save
      Assignation.create(task_id: @task.id, user_id: params[:users_assigned][:user_id])
       flash[:success] = "Task created!"
-      redirect_to(tasks_path)
+      redirect_to(tasks_path(filter:"authored"))
     else
       redirect_to(new_tasks_path)
     end

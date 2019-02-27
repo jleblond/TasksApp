@@ -1,10 +1,15 @@
-<h2>Tasks Assigned</h2>
+<h2><%= t("filter_titles.#{params[:filter]}") %></h2>
+(Number of tasks: <%= @tasks.count %>)
 
-(Number of assignations: <%= @tasks_assigned.count
-%>)
+<ul>
+  <li> <%= link_to "Tasks Assigned",  tasks_path(filter:"assigned") %> </li>
+  <li> <%= link_to "Tasks Authored",  tasks_path(filter:"authored") %> </li>
+</ul>
+
+
 
 <ul class="tasks">
-  <% @tasks_assigned.each do |t| %>
+  <% @tasks.each do |t| %>
       <li>
         <%=   t.id %>
         <%=   t.task_name %>
@@ -13,17 +18,3 @@
 </ul>
 
 
-<% if current_user.admin? %>
-    <h2>Manage All Tasks</h2>
-    (<%= t("filter_titles.#{params[:filter]}") %>: <%= @tasks_all.count
-%>)
-<ul class="tasks">
-  <% @tasks_all.each do |t| %>
-      <li>
-        <%=   t.id %>
-        <%=   t.task_name %>
-      </li>
-  <% end %>
-</ul>
-
-<% end %>

@@ -23,7 +23,7 @@
         <%= f.label :start_date, "Start Date (optional)" %>
         <%= select_datetime nil, :prefix => :start_dt, :include_blank => true %>
         <%= f.label :due_dt, "Due Date" %>
-        <%= select_datetime Date.today, :prefix => :due_dt %>
+        <%= select_datetime nil, :prefix => :due_dt, :include_blank => true %>
 
         <%= f.submit "Create a new Task", class: "btn btn-large btn-primary" %>
         <% end %>
