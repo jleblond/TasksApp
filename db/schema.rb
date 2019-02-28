@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(:version => 20190220215702) do
 
   create_table "tasks", :force => true do |t|
     t.string   "task_name"
-    t.datetime "start_date"
-    t.datetime "due_date"
+    t.date     "start_date"
+    t.date     "due_date"
     t.integer  "category_id"
     t.string   "status"
     t.integer  "author_id"

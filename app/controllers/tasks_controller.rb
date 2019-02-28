@@ -20,9 +20,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @due_date = datetime_from_form(params[:due_dt])
+    @due_date = date_from_form(params[:due_dt])
     params[:task][:due_date]= @due_date
-    @start_date = datetime_from_form(params[:start_dt])
+    @start_date = date_from_form(params[:start_dt])
     params[:task][:start_date] = @start_date
 
 
