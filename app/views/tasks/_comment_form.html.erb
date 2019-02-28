@@ -4,7 +4,6 @@
   <div class="span6 offset3">
     <%= form_for Comment.new, url: task_comments_path(@task)  do |f| %>
 
-        <%= f.label :text, "Text" %>
         <%= f.text_area :text %>
 
 

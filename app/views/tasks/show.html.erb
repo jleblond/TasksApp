@@ -1,5 +1,13 @@
 <h2>Task: <%=  @task.task_name %> </h2>
 
+<% if @author == current_user %>
+  <%= link_to "edit",  edit_task_path(@task) %>
+<% end %>
+
+
+
+
+
 <div class="row">
   <div class="span6 offset3">
     TASK: <%=  @task.task_name  %>
@@ -21,6 +29,7 @@
             <%=   u.name %>
             <%=   u.email %>
           </li>
+
       <% end %>
     </ul>
     Start Date: <%=     @task.start_date.to_s  %>
@@ -29,6 +38,8 @@
 
     <%= render :partial => 'comment_form', :locals => { :task_id => @task.id, :user_id => current_user.id }  %>
     <%= render 'comments' %>
+
+
 
 
 

@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :require_author_permission, only: :edit
 
   def index
     @tasks_assigned = current_user.tasks_assigned
@@ -40,12 +41,27 @@ class TasksController < ApplicationController
   def show
     @task= Task.find(params[:id])
 
+    @author = Task.find(params[:id]).author
    # @comments = @task.comments
 
   end
 
   def edit
     @task= Task.find(params[:id])
+
+
+    @users = User.all # used in the form to select users to whom the task will be assigned to
+    @task_categories = TaskCategory.all
+
+  end
+
+
+  private
+
+  def require_author_permission
+    if current_user != Task.find(params[:id]).author
+      redirect_to(tasks_path(filter:"authored"))
+    end
   end
 
 

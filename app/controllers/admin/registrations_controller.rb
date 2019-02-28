@@ -1,12 +1,27 @@
-class Users::RegistrationsController < Devise::RegistrationsController
+class Admin::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
 
-  skip_before_filter :require_no_authentication, only: [:new]
+# skip_filter :require_no_authentication, only: [:new]
+# prepend_before_filter :require_no_authentication, :only => [:new, :create]
+# prepend_before_filter :authenticate_scope!
 
 
-  # GET /resource/sign_up
+  skip_filter :require_no_authentication, only: [:new, :create]
+
+  def edit
+    @user = User.find(params[:id])
+    super
+  end
+
+  protected
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+# GET /resource/sign_up
   # def new
   #   super
   # end

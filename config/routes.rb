@@ -1,16 +1,45 @@
 TasksApp::Application.routes.draw do
 
 
-  devise_for :users
+  # devise_for :users
+  devise_for :users, skip: :registrations
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  devise_scope :user do
+    resource :registration,
+             only: [:new, :create, :edit, :update],
+             path: 'users',
+             path_names: { new: 'sign_up' },
+             controller: 'devise/registrations',
+             as: :user_registration do
+      get :cancel
+    end
+  end
+
+  devise_scope :admin do
+    resource :registration,
+             only: [:new, :create, :edit, :update, :destroy],
+             path: 'admin/users',
+             path_names: { new: 'sign_up' },
+             controller: 'admin/registrations',
+             as: :admin_user_registration do
+      get :cancel
+    end
+
+    # get 'admin/users/signup', to: "admin/registrations#new"
+  end
+
+  # devise_for :admin, controllers: { registrations: 'admin/registrations' }
+
+
   resources :users
   resources :tasks do
      resources :comments, controller: 'tasks/comments'
   end
+
   resources :notifications
 
 
