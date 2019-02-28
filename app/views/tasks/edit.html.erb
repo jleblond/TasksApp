@@ -18,7 +18,7 @@
             <%= users_assigned_form.label :user_id, "User Assigned to this Task" %><br>
             <% @task.users_assigned.each do |u| %>
               <li>
-                <%= users_assigned_form.collection_select :user_id, @users, :id, :name, include_blank: true %>
+                <%= users_assigned_form.collection_select( :user_id, @users, :id, :name, {:selected => u.id}) %>
               </li>
             <% end %>
 

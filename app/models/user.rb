@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
 
   has_many :user_roles
   has_many :roles, through: :user_roles
+  after_create :add_default_role
 
   has_many :tasks_as_author, class_name: "Task", foreign_key: :author_id
 
@@ -50,8 +51,16 @@ class User < ActiveRecord::Base
   default_scope order: 'users.name ASC'
 
   def admin?
-    @admin_id = Role.find_by_role_name("admin")
-    self.roles.exists?(@admin_id)
+    @admin_role = Role.find_by_role_name("admin")
+    self.roles.exists?(@admin_role)
+  end
+
+
+  private
+
+  def add_default_role
+    @regular_role_id = Role.find_by_role_name("regular").id
+    UserRole.create(user_id: self.id, role_id: @regular_role_id)
   end
 
 end
