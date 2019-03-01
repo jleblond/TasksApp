@@ -15,4 +15,12 @@ class Role < ActiveRecord::Base
   has_many :users, through: :user_roles
 
   validates :role_name, presence: true, length: {maximum: 50}, uniqueness: { case_sensitive: false }
+
+  def self.admin_role
+    Role.find_by_role_name("Admin")
+  end
+
+  def self.regular_role
+    Role.find_by_role_name("Regular")
+  end
 end

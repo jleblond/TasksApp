@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :role_admin?
 
 
@@ -18,6 +19,9 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      params[:user_roles].each { |r_id|
+        UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
+      }
       flash[:success] = "User created!"
       redirect_to(admin_users_path)
     else
@@ -37,7 +41,11 @@ class Admin::UsersController < ApplicationController
 
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-
+      UserRole.delete_all(user_id: @user.id)
+      UserRole.create(user_id: @user.id, role_id: Role.regular_role.id)
+      params[:user_roles].each { |r_id|
+        UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
+      }
       flash[:success] = "Profile updated"
       redirect_to(admin_user_path(@user))
     else

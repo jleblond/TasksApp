@@ -14,12 +14,10 @@
           <%= f.text_area :description %>
         </li>
         <li>
-            <%= f.label :user_id, "User Assigned to this Task" %><br>
-
-              <%= select_tag :users_assigned,
+          <%= f.label :users_assigned, "User Assigned to this Task" %><br>
+          <%= select_tag :users_assigned,
                              options_for_select(User.all.collect {|x| [x.name, x.id]}, selected: @users_assigned_ids), multiple: true
-              %>
-
+          %>
         </li>
         <li>
           <%= f.label :category_id, "Task Category" %><br>

@@ -1,4 +1,5 @@
 class Admin::TaskCategoriesController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :role_admin?
 
   def index

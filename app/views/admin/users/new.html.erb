@@ -26,6 +26,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+      <%= f.label :user_roles, "User Roles" %><br>
+      <%= select_tag :user_roles,
+                     options_for_select(Role.all.collect {|x| [x.role_name, x.id]}, selected: Role.regular_role.id), multiple: true
+      %>
+
+  </div>
+
 
   <div class="actions">
     <%= f.submit "Create User" %>

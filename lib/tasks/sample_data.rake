@@ -8,7 +8,7 @@ end
 
 def make_users
 
-  admin_role_id = Role.find_by_role_name("admin").id
+  admin_role_id = Role.find_by_role_name("Admin").id
 
 
   admin = User.create(name:"admin", email:"admin@example.com", password:"12345678")

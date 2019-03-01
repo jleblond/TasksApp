@@ -6,8 +6,8 @@ class CreateRoles < ActiveRecord::Migration
       t.timestamps
     end
 
-    Role.create(role_name:"regular")
-    Role.create(role_name:"admin")
+    Role.create(role_name:"Regular")
+    Role.create(role_name:"Admin")
   end
 
 

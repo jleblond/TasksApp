@@ -51,8 +51,13 @@ class User < ActiveRecord::Base
   default_scope order: 'users.name ASC'
 
   def admin?
-    @admin_role = Role.find_by_role_name("admin")
+    @admin_role = Role.admin_role
     self.roles.exists?(@admin_role)
+  end
+
+  def regular?
+    @regular_role = Role.regular_role
+    self.roles.exists?(@regular_role)
   end
 
 
@@ -60,7 +65,7 @@ class User < ActiveRecord::Base
   private
 
   def add_default_role
-    @regular_role_id = Role.find_by_role_name("regular").id
+    @regular_role_id = Role.regular_role.id
     UserRole.create(user_id: self.id, role_id: @regular_role_id)
   end
 
