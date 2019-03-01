@@ -52,7 +52,7 @@ class TasksController < ApplicationController
 
     @users = User.all # used in the form to select users to whom the task will be assigned to
     @task_categories = TaskCategory.all
-
+    @task_statuses = TaskStatus.all
 
   end
 
@@ -65,7 +65,7 @@ class TasksController < ApplicationController
    @start_date = date_from_form(params[:start_dt])
     params[:task][:start_date] = @start_date
 
-
+binding.pry
     if @task.update_attributes!(params[:task])
       flash[:success] = "Task updated"
       redirect_to(task_path(@task))

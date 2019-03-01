@@ -4,10 +4,10 @@
 #
 #  id          :integer          not null, primary key
 #  task_name   :string(255)
-#  start_date  :datetime
-#  due_date    :datetime
+#  start_date  :date
+#  due_date    :date
 #  category_id :integer
-#  status      :string(255)
+#  status_id   :integer
 #  author_id   :integer
 #  description :text
 #  created_at  :datetime         not null

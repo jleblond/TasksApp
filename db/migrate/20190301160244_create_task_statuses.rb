@@ -6,6 +6,7 @@ class CreateTaskStatuses < ActiveRecord::Migration
       t.timestamps
     end
 
+    TaskStatus.create(status:"Created")
     TaskStatus.create(status:"Completed")
     TaskStatus.create(status:"Cancelled")
     TaskStatus.create(status:"Modified")
