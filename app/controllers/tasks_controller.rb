@@ -60,14 +60,13 @@ class TasksController < ApplicationController
   def update
     @task= Task.find(params[:id])
 
-    # @due_date = date_from_form(params[:due_dt])
-    # @start_date = date_from_form(params[:start_dt])
-    # params[:task][:start_date] = @start_date
-    #
-    # TODO : date updates, user assigned (through assignation table update)
+   @due_date = date_from_form(params[:due_dt])
+   params[:task][:due_date] = @due_date
+   @start_date = date_from_form(params[:start_dt])
+    params[:task][:start_date] = @start_date
 
 
-    if @task.update_attributes(params[:task])
+    if @task.update_attributes!(params[:task])
       flash[:success] = "Task updated"
       redirect_to(task_path(@task))
     else

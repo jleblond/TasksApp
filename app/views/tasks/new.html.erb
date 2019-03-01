@@ -17,6 +17,7 @@
     <%= fields_for :users_assigned do |users_assigned_form| %>
       <%= users_assigned_form.label :user_id, "User Assigned to this Task" %><br>
       <%= users_assigned_form.collection_select :user_id, @users, :id, :name, include_blank: true %>
+      <% # link_to '+ Add user', @users, :method => :delete, :remote=>true, :class=>'add_assigned_user' %>
     <% end %>
     </li>
       <li>
@@ -24,7 +25,7 @@
     <%= f.collection_select :category_id, @task_categories, :id, :category, include_blank: true %>
       </li>
       <li>
-    <%= f.label :start_date, "Start Date (optional)" %>
+    <%= f.label :start_dt, "Start Date (optional)" %>
     <%= select_date nil, :prefix => :start_dt, :include_blank => true %>
       </li>
       <li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190220215702) do
+ActiveRecord::Schema.define(:version => 20190301160244) do
 
   create_table "assignations", :force => true do |t|
     t.integer  "task_id"
@@ -50,12 +50,18 @@ ActiveRecord::Schema.define(:version => 20190220215702) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "task_statuses", :force => true do |t|
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "tasks", :force => true do |t|
     t.string   "task_name"
     t.date     "start_date"
     t.date     "due_date"
     t.integer  "category_id"
-    t.string   "status"
+    t.integer  "status_id"
     t.integer  "author_id"
     t.text     "description"
     t.datetime "created_at",  :null => false
