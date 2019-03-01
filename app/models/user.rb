@@ -56,6 +56,7 @@ class User < ActiveRecord::Base
   end
 
 
+
   private
 
   def add_default_role

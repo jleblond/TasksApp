@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_author_permission, only: :edit
+  before_filter :require_author_permission, only: [:edit, :update]
 
   def index
     @tasks_assigned = current_user.tasks_assigned
@@ -52,6 +52,28 @@ class TasksController < ApplicationController
 
     @users = User.all # used in the form to select users to whom the task will be assigned to
     @task_categories = TaskCategory.all
+
+
+  end
+
+
+  def update
+    @task= Task.find(params[:id])
+
+    # @due_date = date_from_form(params[:due_dt])
+    # @start_date = date_from_form(params[:start_dt])
+    # params[:task][:start_date] = @start_date
+    #
+    # TODO : date updates, user assigned (through assignation table update)
+
+
+    if @task.update_attributes(params[:task])
+      flash[:success] = "Task updated"
+      redirect_to(task_path(@task))
+    else
+      render 'edit'
+    end
+
 
 
   end

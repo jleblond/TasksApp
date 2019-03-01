@@ -1,6 +1,6 @@
 <h2>Edit User [as an admin]</h2>
 
-<%= form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+<%= form_for(@user, url: admin_user_path(@user), html: { method: :put }) do |f| %>
 
 
   <div class="field">
@@ -25,18 +25,15 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+
 
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h4>Cancel account</h4>
 
-<p> <%= button_to "Cancel account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p> <%= button_to "Cancel account", admin_user_path(@user), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

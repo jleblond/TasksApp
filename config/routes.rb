@@ -19,18 +19,18 @@ TasksApp::Application.routes.draw do
     end
   end
 
-  devise_scope :admin do
-    resource :registration,
-             only: [:new, :create, :edit, :update, :destroy],
-             path: 'admin/users',
-             path_names: { new: 'sign_up' },
-             controller: 'admin/registrations',
-             as: :admin_user_registration do
-      get :cancel
-    end
-
-    # get 'admin/users/signup', to: "admin/registrations#new"
-  end
+  # devise_scope :admin do
+  #   resource :registration,
+  #            only: [:new, :create, :edit, :update, :destroy],
+  #            path: 'admin/users',
+  #            path_names: { new: 'sign_up' },
+  #            controller: 'admin/registrations',
+  #            as: :admin_user_registration do
+  #     get :cancel
+  #   end
+  #
+  #   # get 'admin/users/signup', to: "admin/registrations#new"
+  # end
 
   # devise_for :admin, controllers: { registrations: 'admin/registrations' }
 

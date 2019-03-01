@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
    # redirect_to :back
    return
   end
-  
+
 
 
 end
