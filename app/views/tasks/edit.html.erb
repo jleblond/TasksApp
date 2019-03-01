@@ -29,12 +29,12 @@
           <%= f.collection_select :category_id, @task_categories, :id, :category, include_blank: true %>
         </li>
         <li>
-          <%= f.label :start_date, "Start Date (optional)" %>
-          <%= select_date nil, :prefix => :start_dt, :include_blank => true %>
+          <%= f.label :start_dt, "Start Date (optional)" %>
+          <%= select_date(start_dt = @task.start_date, prefix: start_dt, include_blank: true)  %>
         </li>
         <li>
           <%= f.label :due_dt, "Due Date" %>
-          <%= select_date nil, :prefix => :due_dt, :include_blank => true %>
+          <%=  select_date(due_dt = @task.due_date, prefix: due_dt, include_blank: true)  %>
         </li>
 
         <%= f.submit "Create a new Task", class: "btn btn-large btn-primary" %>

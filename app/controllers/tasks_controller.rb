@@ -54,7 +54,6 @@ class TasksController < ApplicationController
     @task_categories = TaskCategory.all
 
 
-
   end
 
 
