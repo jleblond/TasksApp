@@ -34,7 +34,12 @@
     </ul>
     Start Date: <%=     @task.start_date.to_s  %>
     DUE DATE: <%=    @task.due_date.to_s  %>
-    Status: <%= @task.status.status %>
+    Status:
+    <%= if @task.status.present?
+          @task.status.status
+        end
+    %>
+
 
 
     <%= render :partial => 'comment_form', :locals => { :task_id => @task.id, :user_id => current_user.id }  %>
