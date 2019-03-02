@@ -3,6 +3,7 @@
 <% @task.comments.each do |c| %>
     <li>
       <%=   c.user.name %>
+      <%=   c.created_at %>
       <%=   c.text %>
 
     </li>

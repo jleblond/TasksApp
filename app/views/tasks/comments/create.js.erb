@@ -1,0 +1,4 @@
+$('#new_comment')[0].reset()
+
+var content = "<%= escape_javascript(render :partial => 'tasks/comments').html_safe %>"
+$('.comments').html("[Comment added!]").append(content);

@@ -6,8 +6,12 @@ class Tasks::CommentsController < ApplicationController
 
   @task.comments.create(params[:comment])
 
+  respond_to do |format|
+    format.html
+    format.json
+    format.js
+  end
 
-    redirect_to(task_path(@task))
 
   end
 
