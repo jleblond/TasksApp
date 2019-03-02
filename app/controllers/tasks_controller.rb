@@ -25,6 +25,8 @@ class TasksController < ApplicationController
     @start_date = date_from_form(params[:start_dt])
     params[:task][:start_date] = @start_date
 
+    params[:task][:status_id] = TaskStatus.find_by_status("Created").id
+
     @task = current_user.tasks_as_author.build(params[:task])
 
     if @task.save
@@ -34,7 +36,7 @@ class TasksController < ApplicationController
       flash[:success] = "Task created!"
       redirect_to(tasks_path(filter:"authored"))
     else
-      redirect_to(new_tasks_path)
+      redirect_to(new_task_path)
     end
 
   end

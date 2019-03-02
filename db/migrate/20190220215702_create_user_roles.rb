@@ -6,5 +6,7 @@ class CreateUserRoles < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :users_and_roles, [:user_id, :role_id], unique: true
   end
 end

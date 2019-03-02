@@ -29,15 +29,11 @@ class Task < ActiveRecord::Base
 
   has_many :comments
 
-  after_create :init
 
-  # validates :task_name, presence: true, length: { maximum: 50 }
-  # validates :due_date, presence: true
+  validates :task_name, presence: true, length: { maximum: 50 }
+  validates :due_date, presence: true
   # validates :category_id, presence: true
-  # validates :author_id, presence: true
+  validates :author_id, presence: true
   # validates :description, presence: true
 
-  def init
-    self.status_id = TaskStatus.find_by_status("Created").id
-  end
 end

@@ -18,5 +18,5 @@ class Comment < ActiveRecord::Base
 
   validates :task_id, presence: true
   validates :user_id, presence: true
-  # validates :text, presence: true
+  validates :text, presence: true
 end
