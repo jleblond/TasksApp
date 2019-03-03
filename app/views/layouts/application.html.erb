@@ -8,10 +8,36 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
-<%= yield %>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <% if signed_in? && current_user.admin? %>
+    <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+      <nav class="nav navbar-light navbar-toggleable-sm">
+        <div class="navbar-collapse collapse flex-column mt-md-0 mt-4 pt-md-0 pt-4" id="myNavbar">
+          <%= render 'layouts/sidebar' %>
+        </div>
+      </nav>
+    </div>
+    <% end %>
+
+    <div class="col-9 col-sm-10 col-md-10 col-lg-11 col-xl-11">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
 <%= render 'layouts/footer' %>
 
 <%= debug(params) if Rails.env.development? %>

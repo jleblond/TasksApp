@@ -1,0 +1,2 @@
+var content = "<%= escape_javascript(render :partial => 'admin/tasks/search_results', :locals => @tasks).html_safe %>"
+$('.search-results').html("Results: ").append(content);

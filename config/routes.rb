@@ -49,6 +49,8 @@ TasksApp::Application.routes.draw do
     resources :tasks
   end
 
+  match 'admin/tasks/search' => 'admin/tasks#search', :as => :admin_tasks_search, via: [:post]
+
   root to: 'home#index'
 
 

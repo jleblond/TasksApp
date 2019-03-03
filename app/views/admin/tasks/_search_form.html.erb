@@ -1,0 +1,21 @@
+<%= form_for(Task.new, :url => admin_tasks_search_path, remote: true)  do |f| %>
+  <ul>
+    <li>
+      <%= f.label :author_id, "Authors" %><br>
+      <%= f.collection_select :author_id, @users, :id, :name, include_blank: true %>
+    </li>
+    <li>
+      <%= f.label :category_id, "Task Category" %><br>
+      <%= f.collection_select :category_id, @task_categories, :id, :category, include_blank: true %>
+    </li>
+
+    <li>
+      <%= f.label :status_id, "Status" %>
+      <%= f.collection_select :status_id, @task_statuses, :id, :status, include_blank: true %>
+    </li>
+  </ul>
+
+    <%= f.submit "Search", class: "btn btn-large btn-primary" %>
+<% end %>
+
+

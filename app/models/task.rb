@@ -36,4 +36,9 @@ class Task < ActiveRecord::Base
   validates :author_id, presence: true
   # validates :description, presence: true
 
+
+  scope :author_id, ->(value) { where(author_id: value) }
+  scope :category_id, ->(value) { where(category_id: value) }
+  scope :status_id, ->(value) { where(status_id: value) }
+
 end
