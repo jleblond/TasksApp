@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
 
   has_many :user_roles
   has_many :roles, through: :user_roles
-  after_create :add_default_role
 
   has_many :tasks_as_author, class_name: "Task", foreign_key: :author_id
 
@@ -42,6 +41,9 @@ class User < ActiveRecord::Base
   has_many :comments
 
   has_many :notifications
+
+
+  after_create :add_default_role
 
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -68,5 +70,8 @@ class User < ActiveRecord::Base
     @regular_role_id = Role.regular_role.id
     UserRole.create(user_id: self.id, role_id: @regular_role_id)
   end
+
+
+
 
 end
