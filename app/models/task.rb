@@ -36,6 +36,8 @@ class Task < ActiveRecord::Base
   validates :author_id, presence: true
   # validates :description, presence: true
 
+  default_scope order: 'tasks.due_date ASC'
+
 
   scope :author_id, ->(value) { where(author_id: value) }
   scope :category_id, ->(value) { where(category_id: value) }

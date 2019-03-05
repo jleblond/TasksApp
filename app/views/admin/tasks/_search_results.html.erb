@@ -5,6 +5,8 @@
     <li>
       <%=   t.id %>
       <%=   t.task_name %>
+        Due Date: <%=   t.due_date %>
+      <%= link_to "show",  task_path(t) %>
     </li>
   <% end %>
 </ul>
