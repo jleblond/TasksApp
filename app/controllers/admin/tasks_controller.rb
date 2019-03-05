@@ -14,12 +14,14 @@ class Admin::TasksController < ApplicationController
   def search
 # redirect_to admin_tasks_path(params[:task])
 
-    @tasks = Task.scoped
+    @t = Task.scoped
+    @t = @t.author_id(params[:task][:author_id]) if params[:task][:author_id].present?
+    @t = @t.category_id(params[:task][:category_id]) if params[:task][:category_id].present?
+    @t = @t.status_id(params[:task][:status_id]) if params[:task][:status_id].present?
 
-    @tasks = @tasks.author_id(params[:task][:author_id]) if params[:task][:author_id].present?
-    @tasks = @tasks.category_id(params[:task][:category_id]) if params[:task][:category_id].present?
-    @tasks = @tasks.status_id(params[:task][:status_id]) if params[:task][:status_id].present?
+    @u_t = User.find(params[:user_assigned_id]).tasks_assigned
 
+    @tasks = @t & @u_t
 
 
     respond_to do |format|

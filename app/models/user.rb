@@ -52,6 +52,14 @@ class User < ActiveRecord::Base
 
   default_scope order: 'users.name ASC'
 
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
   def admin?
     @admin_role = Role.admin_role
     self.roles.exists?(@admin_role)

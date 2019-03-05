@@ -62,6 +62,6 @@ module TasksApp
 
 
 
-   config.active_record.observers =  :user_observer
+   config.active_record.observers =  :user_observer, :task_observer, :assignation_observer
   end
 end

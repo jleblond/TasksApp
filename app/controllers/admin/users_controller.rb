@@ -23,9 +23,6 @@ class Admin::UsersController < ApplicationController
         UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
       }
 
-      message = "User "+@user.name+" created by "+current_user.name
-      send_create_notification message, nil
-
       flash[:success] = "User created!"
       redirect_to(admin_users_path)
     else
