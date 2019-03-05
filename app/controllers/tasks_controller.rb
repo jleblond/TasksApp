@@ -71,12 +71,14 @@ class TasksController < ApplicationController
     params[:task][:start_date] = @start_date
 
 
-
     if @task.update_attributes(params[:task])
-      Assignation.delete_all(task_id: @task.id)
       params[:users_assigned].each { |u_id|
-        Assignation.create(task_id: @task.id, user_id: u_id) if !u_id.blank?
+        if !u_id.blank? && Assignation.where(task_id: @task.id, user_id: u_id).empty?
+         Assignation.create(task_id: @task.id, user_id: u_id)
+        end
       }
+
+
       flash[:success] = "Task updated"
       redirect_to(task_path(@task))
     else

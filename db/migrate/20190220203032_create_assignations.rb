@@ -9,6 +9,7 @@ class CreateAssignations < ActiveRecord::Migration
 
     add_index :assignations, [:task_id, :user_id], unique: true
 
+
   end
 
 
