@@ -5,8 +5,11 @@ class Admin::TasksController < ApplicationController
   def index
     @tasks = Task.all
 
-
-
+  if params[:sort_param]=="created_date"
+    @tasks = @tasks.sort_by{|e| e[:created_at]}.reverse
+  elsif params[:sort_param]=="due_date"
+    @tasks = @tasks.sort_by{|e| e[:due_date]}
+  end
 
 
   end

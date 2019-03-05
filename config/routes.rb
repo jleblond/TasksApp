@@ -40,7 +40,11 @@ TasksApp::Application.routes.draw do
      resources :comments, controller: 'tasks/comments'
   end
 
-  resources :notifications
+  resources :notifications do
+    collection do
+      get 'contextual_menu'
+    end
+  end
 
 
   namespace :admin do
@@ -50,6 +54,7 @@ TasksApp::Application.routes.draw do
   end
 
   match 'admin/tasks/search' => 'admin/tasks#search', :as => :admin_tasks_search, via: [:post]
+
 
   root to: 'home#index'
 

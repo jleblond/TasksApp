@@ -12,7 +12,6 @@ class TaskObserver < ActiveRecord::Observer
 
       Notification.create(description: notif_message, user_id: task.author_id, read: false)
 
-
     end
   end
 

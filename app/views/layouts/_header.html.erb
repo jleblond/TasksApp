@@ -1,9 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-
 <header>
   <nav class="navbar navbar-inverse">
     <p class="nav navbar-brand">Tasks App</p>
@@ -27,7 +21,13 @@
 
     <ul class="nav navbar-nav navbar-right">
       <% if signed_in? %>
-        <li><a href="<%= notifications_path %>" alt="Notifications" class="notifications"> <span class="glyphicon glyphicon-bell"></span> <%= current_user.notifications.unread.count %> </a> </li>
+        <li>
+          <%= link_to notifications_path do %>
+          <div class="notifications">
+            <span class="glyphicon glyphicon-bell"></span> <%= current_user.notifications.unread.count %>
+          </div>
+          <% end %>
+        </li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="glyphicon glyphicon-user"></span> <%= current_user.name %>
             <span class="caret"></span></a>
@@ -47,4 +47,6 @@
 </header>
 
 
+<div class="modal" style="display:none;">
+</div>
 

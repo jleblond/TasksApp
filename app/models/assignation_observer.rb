@@ -15,8 +15,4 @@ class AssignationObserver < ActiveRecord::Observer
   end
 
 
-  def admin_users
-    admins = UserRole.where(role_id: Role.admin_role.id).pluck(:id)
-  end
-
 end
