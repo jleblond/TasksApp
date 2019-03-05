@@ -1,4 +1,6 @@
 <ul class="tasks">
+  Number of Tasks: <%= @tasks.count %>
+
   <% @tasks.each do |t| %>
     <li>
       <%=   t.id %>

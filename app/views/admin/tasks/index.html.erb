@@ -1,14 +1,13 @@
 <h2>Manage All Tasks</h2>
-Number of Tasks: <%= @tasks.count %>
 
 </br></br>
 <%= link_to "+ New Task",  new_task_path %>
 
 <div class="search-form">
-  <%= render :partial => 'search_form', :locals => { tasks: @tasks }  %>
+  <%= render :partial => 'search_form'  %>
 </div>
 
 
 <div class="search-results">
-  <%= render :partial => 'search_results', :locals => { tasks: @tasks }  %>
+
 </div>

@@ -4,40 +4,29 @@ class Admin::TasksController < ApplicationController
 
   def index
 
-      @task_categories = TaskCategory.all
-      @task_statuses = TaskStatus.all
-      @users = User.all
-
-      @tasks = Task.where(nil)
-
-    @tasks = @tasks.author_id(params[:author_id]) if params[:author_id].present?
-    @tasks = @tasks.category_id(params[:category_id]) if params[:category_id].present?
-    @tasks = @tasks.status_id(params[:status_id]) if params[:status_id].present?
 
 
-    #
-    # respond_to do |format|
-    #   format.html { render :index, :locals => {tasks: @tasks} }
-    #   format.json
-    #   format.js { render :index, :locals => {tasks: @tasks} }
-    # end
+
+
 
   end
 
   def search
-     @tasks = Task.where(nil)
-     @tasks = @tasks.author_id(params[:author_id]) if params[:author_id].present?
-     @tasks = @tasks.category_id(params[:category_id]) if params[:category_id].present?
-     @tasks = @tasks.status_id(params[:status_id]) if params[:status_id].present?
+# redirect_to admin_tasks_path(params[:task])
+
+    @tasks = Task.scoped
+
+    @tasks = @tasks.author_id(params[:task][:author_id]) if params[:task][:author_id].present?
+    @tasks = @tasks.category_id(params[:task][:category_id]) if params[:task][:category_id].present?
+    @tasks = @tasks.status_id(params[:task][:status_id]) if params[:task][:status_id].present?
 
 
 
     respond_to do |format|
       format.html { render :index, :locals => {tasks: @tasks} }
       format.json
-      format.js { render :index, :locals => {tasks: @tasks} }
+      format.js
     end
-
 
   end
 
