@@ -6,14 +6,26 @@
 <span class="glyphicon glyphicon-plus"></span> Task Category
 <% end %>
 
-<ul class="task-categories">
-  <% @task_categories.each do |c| %>
-      <li>
-        <%=   c.id %>
-        <%=   c.category %>
-        <%= link_to  edit_admin_task_category_path(c) do %>
-            <span class="glyphicon glyphicon-edit" alt="edit"></span>
-        <% end %>
-      </li>
-  <% end %>
-</ul>
+<div class="task-categories">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Category</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @task_categories.each do |c| %>
+        <tr>
+          <td> <%=   c.category %> </td>
+          <td>
+            <%= link_to  edit_admin_task_category_path(c) do %>
+                <span class="glyphicon glyphicon-edit" alt="edit"></span>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+</div>

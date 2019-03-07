@@ -1,13 +1,16 @@
 <h2>New Task Category</h2>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="">
     <%= form_for(TaskCategory.new, :url => { :action => "create" })  do |f| %>
-        <%= f.label :category, "Task Category" %>
-        <%= f.text_field :category %>
+        <div class="form-group">
+          <%= f.label :category, "Task Category" %>
+          <%= f.text_field :category, class:"form-control" %>
+        </div>
 
 
-        <%= f.submit "Create a task Category", class: "btn btn-large btn-primary" %>
+
+        <%= f.submit "Create", class: "btn btn-large btn-primary" %>
         <% end %>
   </div>
 </div>

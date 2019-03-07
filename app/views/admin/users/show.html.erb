@@ -13,7 +13,6 @@
     Email : <%= @user.email %>
 
     <ul class="user-roles">
-      User Role(s):
       <% @user.roles.each do |ur| %>
           <li>
             <%=   ur.role_name %>

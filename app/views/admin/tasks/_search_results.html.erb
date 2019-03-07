@@ -1,17 +1,40 @@
-<ul class="tasks">
+<div class="tasks">
+  <h3> Results </h3>
   Number of Tasks: <%= @tasks.count %>
 
   <%= link_to "Sort by Recent Task",  admin_tasks_path(sort_param: "created_date") %>
   <%= link_to "Sort by Due Date",  admin_tasks_path(sort_param: "due_date") %>
 
-  <% @tasks.each do |t| %>
-    <li>
-      <%=   t.id %>
-      <%=   t.task_name %>
-        Due Date: <%=   t.due_date %>
-      <%= link_to  task_path(t) do %>
-          <span class="glyphicon glyphicon-eye-open" alt="view"></span>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Task ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Due Date</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @tasks.each do |t| %>
+        <tr>
+          <th scope="row"> <%=   t.id %> </th>
+          <td> <%=   t.task_name %> </td>
+          <td> <%=   t.due_date %> </td>
+          <td>
+            <%= link_to  task_path(t) do %>
+                <span class="glyphicon glyphicon-eye-open" alt="show"></span>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to  edit_task_path(t) do %>
+                <span class="glyphicon glyphicon-edit" alt="edit"></span>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+</div>

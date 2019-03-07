@@ -2,6 +2,9 @@
   <section>
     <h1>
       Account Information
+      <%= link_to  edit_user_path(current_user) do %>
+          <span class="glyphicon glyphicon-edit" alt="edit"></span>
+      <% end %>
     </h1>
   </section>
   <section>
@@ -10,7 +13,6 @@
     Email : <%= @user.email %>
 
     <ul class="user-roles">
-      User Role(s):
       <% @user.roles.each do |ur| %>
           <li>
             <%=   ur.role_name %>
@@ -20,7 +22,5 @@
     </ul>
 
   </section>
-
-  <%= link_to "edit",  edit_user_path(@user) %>
 
 </aside>

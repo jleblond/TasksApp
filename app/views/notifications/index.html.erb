@@ -1,22 +1,30 @@
 <h2>Notifications</h2>
 <% if current_user.notifications.any? %>
-    <ol class="notifications">
-      <% @notifications.each do |notification| %>
-      <li>
+
+
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active">
+    Cras justo odio
+  </a>
+
+  <% @notifications.each do |notification| %>
+      <a href="<%= edit_notification_path(notification) %>" class="list-group-item list-group-item-action">
         <span class="content"><%= notification.description %></span>
          <span class="timestamp">
             <%= time_ago_in_words(notification.created_at) %> ago.
          </span>
 
-             <%= link_to notification, method: :delete,
-                data: { confirm: "You sure?" } do %>
-                     <span class="glyphicon glyphicon-remove" alt="delete"></span>
-             <% end %>
+        <%= link_to notification, method: :delete,
+            data: { confirm: "You sure?" } do %>
+        <span class="glyphicon glyphicon-remove" alt="delete"></span>
+        <% end %>
+      </a>
 
-      </li>
-      <% end %>
-    </ol>
+  <% end %>
+
+</div>
 
 <% end %>
+
 
 
