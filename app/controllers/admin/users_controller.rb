@@ -20,13 +20,16 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      params[:user_roles].each { |r_id|
-        UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
-      }
+      if params[:user_roles].present?
+        params[:user_roles].each { |r_id|
+          UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
+        }
+      end
+
       flash[:notice] = "User created!"
       redirect_to(admin_users_path)
     else
-      flash[:alert] = "User not created"
+      flash[:alert] = "User not created"  #@user.errors
       render 'new'
     end
   end

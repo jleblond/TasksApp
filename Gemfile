@@ -8,7 +8,7 @@ gem 'nokogiri', '1.6.8'
 gem 'websocket', '1.2.4'
 # sgem 'rb-inotify', '0.9.10'
 
-gem 'bootstrap-sass', '2.1'
+# gem 'bootstrap-sass', '2.1'
 
 
 gem 'execjs'

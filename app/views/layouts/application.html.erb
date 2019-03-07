@@ -2,32 +2,31 @@
 <html>
 <head>
   <title>TasksApp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <%= render 'layouts/header' %>
 
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
 
     <% if signed_in? && current_user.admin? %>
-    <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1">
+    <div class="col-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
       <nav class="nav navbar-light navbar-toggleable-sm">
-        <div class="navbar-collapse collapse flex-column mt-md-0 mt-4 pt-md-0 pt-4" id="myNavbar">
           <%= render 'layouts/sidebar' %>
-        </div>
       </nav>
     </div>
     <% end %>
 
-    <div class="col-9 col-sm-10 col-md-10 col-lg-11 col-xl-11">
+    <div class="col-9 col-sm-9 col-md-9 col-lg-10 col-xl-10">
       <%= render 'shared/flash_messages' if !flash.empty? %>
       <%= yield %>
     </div>
@@ -41,6 +40,5 @@
 
 <%= render 'layouts/footer' %>
 
-<%= debug(params) if Rails.env.development? %>
 </body>
 </html>

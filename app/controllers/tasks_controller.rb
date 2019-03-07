@@ -72,8 +72,6 @@ class TasksController < ApplicationController
    start_date = date_from_form(params[:start_dt])
    params[:task][:start_date] = start_date
 
-   binding.pry
-
    # Checks if some mandatory parameters are empty or nil
    if params[:task][:task_name] == "" || params[:task][:due_date] == nil
      flash[:alert] = "Task was not updated"

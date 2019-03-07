@@ -1,20 +1,9 @@
 <aside>
-
-
-    <ul class="nav flex-column">
-      <li class="nav-brand">ADMIN</li>
-      <li class="nav-item">
-         <%= link_to "All Users",  admin_users_path %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Manage Tasks",  admin_tasks_path %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Edit Task Categories",  admin_task_categories_path %>
-      </li>
-    </ul>
-
-
-
+  <ul class="list-group">
+    <li class="list-group-item disabled" aria-disabled="true">ADMIN</li>
+    <li class="list-group-item"><%= link_to "All Users",  admin_users_path %></li>
+    <li class="list-group-item"> <%= link_to "Manage Tasks",  admin_tasks_path %></li>
+    <li class="list-group-item"><%= link_to "Edit Task Categories",  admin_task_categories_path %></li>
+  </ul>
 </aside>
 

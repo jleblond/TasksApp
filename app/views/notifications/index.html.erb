@@ -1,4 +1,4 @@
-<h2>Notifications (<%=current_user.notifications.count %>)</h2>
+<h2>Notifications</h2>
 <% if current_user.notifications.any? %>
     <ol class="notifications">
       <% @notifications.each do |notification| %>

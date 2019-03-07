@@ -8,7 +8,7 @@
         <%= f.text_field :category, placeholder: @task_category.category %>
 
 
-        <%= f.submit "Edit task Category", class: "btn btn-large btn-primary" %>
+        <%= f.submit "Save", class: "btn btn-large btn-primary" %>
     <% end %>
 
      <%= link_to "delete", [:admin, @task_category], method: :delete,

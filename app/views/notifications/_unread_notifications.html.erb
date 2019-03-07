@@ -1,0 +1,38 @@
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">New Notifications (<%=current_user.notifications.unread.count %>)</h4>
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <% if current_user.notifications.unread.any? %>
+            <div class="notifications">
+              <% current_user.notifications.unread.each do |notification| %>
+                  <%= link_to edit_notification_path(notification) do %>
+                  <div class="notification row">
+                        <span class="description"><%= notification.description %></span>
+                        <span class="timestamp"> <%= time_ago_in_words(notification.created_at) %> ago. </span>
+                  </div>
+                  <% end %>
+              <% end %>
+            </div>
+
+        <% end %>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+        <%= submit_tag 'Close', :type => :reset, :class => "btn btn-dark", "data-dismiss" => "modal", "aria-hidden" => "true" %>
+      </div>
+
+    </div>
+  </div>
+</div>

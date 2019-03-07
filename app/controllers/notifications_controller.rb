@@ -17,17 +17,6 @@ class NotificationsController < ApplicationController
   end
 
 
-  def contextual_menu
-    @unread_notifications = current_user.notifications.unread
-
-    respond_to do |format|
-      format.html
-      format.json
-      format.js
-    end
-
-  end
-
 
   def edit #mark as read
     Notification.find(params[:id]).update_attributes(read: true)

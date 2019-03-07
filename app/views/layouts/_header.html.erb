@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse container">
     <p class="nav navbar-brand">Tasks App</p>
     <ul class="nav navbar-nav">
 
@@ -22,12 +22,11 @@
     <ul class="nav navbar-nav navbar-right">
       <% if signed_in? %>
         <li>
-          <%= link_to notifications_path do %>
-          <div class="notifications">
-            <span class="glyphicon glyphicon-bell"></span> <%= current_user.notifications.unread.count %>
-          </div>
-          <% end %>
+              <a data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-bell"></span> <%= current_user.notifications.unread.count %>
+              </a>
         </li>
+
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="glyphicon glyphicon-user"></span> <%= current_user.name %>
             <span class="caret"></span></a>
@@ -41,12 +40,9 @@
       <% end %>
     </ul>
 
-
-
   </nav>
 </header>
 
-
-<div class="modal" style="display:none;">
-</div>
-
+<% if signed_in? %>
+<%= render partial: 'notifications/unread_notifications' %>
+<% end %>
