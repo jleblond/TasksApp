@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   has_many :notifications
 
 
-  after_create :add_default_role
+  # after_create :add_default_role
 
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -65,19 +65,19 @@ class User < ActiveRecord::Base
     self.roles.exists?(@admin_role)
   end
 
-  def regular?
-    @regular_role = Role.regular_role
-    self.roles.exists?(@regular_role)
-  end
+  # def regular?
+  #   @regular_role = Role.regular_role
+  #   self.roles.exists?(@regular_role)
+  # end
 
 
 
   private
 
-  def add_default_role
-    @regular_role_id = Role.regular_role.id
-    UserRole.create(user_id: self.id, role_id: @regular_role_id)
-  end
+  # def add_default_role
+  #   @regular_role_id = Role.regular_role.id
+  #   UserRole.create(user_id: self.id, role_id: @regular_role_id)
+  # end
 
 
 

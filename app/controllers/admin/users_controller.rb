@@ -34,6 +34,7 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @user_roles_ids = @user.roles.pluck(:role_id)
   end
 
 
@@ -46,7 +47,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       UserRole.delete_all(user_id: @user.id)
-      UserRole.create(user_id: @user.id, role_id: Role.regular_role.id)
+    #  UserRole.create(user_id: @user.id, role_id: Role.regular_role.id)
       params[:user_roles].each { |r_id|
         UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
       }

@@ -28,7 +28,7 @@
 <div class="field">
   <%= f.label :user_roles, "User Roles" %><br>
   <%= select_tag :user_roles,
-                 options_for_select(Role.all.collect {|x| [x.role_name, x.id]}, selected: Role.regular_role.id), multiple: true
+                 options_for_select(Role.all.collect {|x| [x.role_name, x.id]}, selected: @user_roles_ids), multiple: true
   %>
 
 </div>
