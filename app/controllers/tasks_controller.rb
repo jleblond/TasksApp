@@ -63,12 +63,24 @@ class TasksController < ApplicationController
 
 
   def update
+
+
    @task= Task.find(params[:id])
 
    due_date = date_from_form(params[:due_dt])
    params[:task][:due_date] = due_date
    start_date = date_from_form(params[:start_dt])
    params[:task][:start_date] = start_date
+
+   binding.pry
+
+   # Checks if some mandatory parameters are empty or nil
+   if params[:task][:task_name] == "" || params[:task][:due_date] == nil
+     flash[:alert] = "Task was not updated"
+     redirect_to(task_path(@task))
+     return
+   end
+
 
     if @task.update_attributes(params[:task])
       # Delete assignations for which their user_id does not match a user_id in params[:users_assigned]
@@ -90,7 +102,7 @@ class TasksController < ApplicationController
       flash[:notice] = "Task updated"
       redirect_to(task_path(@task))
     else
-      flas[:alert] = "Task was not updated"
+      flash[:alert] = "Task was not updated"
       render 'edit'
     end
 

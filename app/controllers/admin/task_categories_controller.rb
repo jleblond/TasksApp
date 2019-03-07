@@ -11,9 +11,9 @@ class Admin::TaskCategoriesController < ApplicationController
   end
 
   def create
-    @category = TaskCategory.create(params[:task_category])
+    @category = TaskCategory.new(params[:task_category])
 
-    if !@category.id == nil
+    if @category.save
       flash[:notice] = "Task Category created!"
       redirect_to(admin_task_categories_path)
     else

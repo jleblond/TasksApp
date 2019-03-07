@@ -19,6 +19,8 @@ class Notification < ActiveRecord::Base
   validates :description, presence: true, length: { maximum: 200 }
   # validates :read, presence: true
 
+  default_scope order: 'notifications.created_at DESC'
+
 
   def self.unread
     where(read: false)
