@@ -2,6 +2,9 @@
   <section>
     <h1>
       Account Information
+          <%= link_to  edit_admin_user_path(@user) do %>
+              <span class="glyphicon glyphicon-edit" alt="edit"></span>
+          <% end %>
     </h1>
   </section>
   <section>
@@ -20,8 +23,6 @@
     </ul>
 
   </section>
-
-  <%= link_to "edit",  edit_admin_user_path(@user) %>
 
   <%= @user.inspect %>
 

@@ -1,9 +1,7 @@
 <header>
   <nav class="navbar navbar-inverse container">
-    <p class="nav navbar-brand">Tasks App</p>
+    <p class="nav navbar-brand"><%= link_to "Tasks App", root_path %></p>
     <ul class="nav navbar-nav">
-
-      <li><%= link_to "Home", root_path %></li>
 
       <% if signed_in? %>
         <li class="dropdown">
@@ -14,7 +12,11 @@
             <li><%= link_to "Tasks authored", tasks_path(filter:"authored")  %></li>
           </ul>
         </li>
-        <li> <%= link_to "+ New Task",  new_task_path %> </li>
+        <li>
+          <%= link_to new_task_path do %>
+              <span class="glyphicon glyphicon-plus"></span> Task
+          <% end %>
+        </li>
       <% end %>
 
     </ul>

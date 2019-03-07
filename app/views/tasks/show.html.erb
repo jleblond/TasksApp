@@ -1,9 +1,10 @@
-<h2>Task: <%=  @task.task_name %> </h2>
-
+<h2>Task: <%=  @task.task_name %>
 <% if @author == current_user || current_user.admin? %>
-  <%= link_to "edit",  edit_task_path(@task) %>
+  <%= link_to  edit_task_path(@task) do %>
+      <span class="glyphicon glyphicon-edit" alt="edit"></span>
+  <% end %>
 <% end %>
-
+</h2>
 
 
 

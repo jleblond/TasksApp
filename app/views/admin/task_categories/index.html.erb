@@ -2,14 +2,18 @@
 (Number of task categories: <%= @task_categories.count
 %>)
 </br> </br>
-<%= link_to "+ New Task Category", new_admin_task_category_path %>
+<%= link_to new_admin_task_category_path do %>
+<span class="glyphicon glyphicon-plus"></span> Task Category
+<% end %>
 
 <ul class="task-categories">
   <% @task_categories.each do |c| %>
       <li>
         <%=   c.id %>
         <%=   c.category %>
-        <%= link_to "edit",  edit_admin_task_category_path(c) %>
+        <%= link_to  edit_admin_task_category_path(c) do %>
+            <span class="glyphicon glyphicon-edit" alt="edit"></span>
+        <% end %>
       </li>
   <% end %>
 </ul>

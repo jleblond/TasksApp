@@ -11,7 +11,9 @@
         <%= f.submit "Save", class: "btn btn-large btn-primary" %>
     <% end %>
 
-     <%= link_to "delete", [:admin, @task_category], method: :delete,
-            data: { confirm: "You sure?" } %>
+     <%= link_to [:admin, @task_category], method: :delete,
+            data: { confirm: "You sure?" } do %>
+            <span class="glyphicon glyphicon-trash" alt="delete"></span>
+     <% end %>
   </div>
 </div>
