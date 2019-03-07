@@ -34,9 +34,10 @@ class TasksController < ApplicationController
       params[:users_assigned][:user_id].each { |u_id|
         Assignation.create(task_id: @task.id, user_id: u_id) if !u_id.blank?
       }
-      flash[:success] = "Task created!"
+      flash[:notice] = "Task created!"
       redirect_to(tasks_path(filter:"authored"))
     else
+      flash[:alert] = "Task was not created"
       redirect_to(new_task_path)
     end
 
@@ -86,9 +87,10 @@ class TasksController < ApplicationController
         end
       }
 
-      flash[:success] = "Task updated"
+      flash[:notice] = "Task updated"
       redirect_to(task_path(@task))
     else
+      flas[:alert] = "Task was not updated"
       render 'edit'
     end
 

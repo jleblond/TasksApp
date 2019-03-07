@@ -23,9 +23,10 @@ class Admin::UsersController < ApplicationController
       params[:user_roles].each { |r_id|
         UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
       }
-      flash[:success] = "User created!"
+      flash[:notice] = "User created!"
       redirect_to(admin_users_path)
     else
+      flash[:alert] = "User not created"
       render 'new'
     end
   end
@@ -49,9 +50,10 @@ class Admin::UsersController < ApplicationController
       params[:user_roles].each { |r_id|
         UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
       }
-      flash[:success] = "Profile updated"
+      flash[:notice] = "Profile updated"
       redirect_to(admin_user_path(@user))
     else
+      flash[:alert] = "User profile not updated"
       redirect_to(admin_user_path(@user))
     end
 
@@ -59,10 +61,16 @@ class Admin::UsersController < ApplicationController
 
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User destroyed"
-    redirect_to(admin_users_path)
+    @user = User.find(params[:id])
+    if User.find(params[:id]).destroy
+      flash[:notice] = "User deleted"
+      redirect_to(admin_users_path)
+    elsif
+      flash[:alert] = "User not deleted"
+      redirect_to(admin_user_path(@user))
+    end
   end
+
 
   private
 
