@@ -6,7 +6,6 @@ class TasksController < ApplicationController
     @tasks_assigned = current_user.tasks_assigned
     @tasks_created = current_user.tasks_as_author
 
-
     @tasks = @tasks_assigned
     if params[:filter] == "authored"
        @tasks = @tasks_created
@@ -14,16 +13,18 @@ class TasksController < ApplicationController
 
   end
 
+
   def new
     @users = User.all # used in the form to select users to whom the task will be assigned to
     @task_categories = TaskCategory.all
   end
 
+
   def create
-    @due_date = date_from_form(params[:due_dt])
-    params[:task][:due_date]= @due_date
-    @start_date = date_from_form(params[:start_dt])
-    params[:task][:start_date] = @start_date
+    due_date = date_from_form(params[:due_dt])
+    params[:task][:due_date]= due_date
+    start_date = date_from_form(params[:start_dt])
+    params[:task][:start_date] = start_date
 
     params[:task][:status_id] = TaskStatus.find_by_status("Created").id
 
@@ -41,38 +42,34 @@ class TasksController < ApplicationController
 
   end
 
+
   def show
     @task= Task.find(params[:id])
-
     @author = Task.find(params[:id]).author
    # @comments = @task.comments
-
   end
+
 
   def edit
     @task= Task.find(params[:id])
-
 
     @users = User.all # used in the form to select users to whom the task will be assigned to
     @task_categories = TaskCategory.all
     @task_statuses = TaskStatus.all
 
     @users_assigned_ids = @task.users_assigned.pluck(:id)
-
   end
 
 
   def update
-    @task= Task.find(params[:id])
+   @task= Task.find(params[:id])
 
-   @due_date = date_from_form(params[:due_dt])
-   params[:task][:due_date] = @due_date
-   @start_date = date_from_form(params[:start_dt])
-    params[:task][:start_date] = @start_date
-
+   due_date = date_from_form(params[:due_dt])
+   params[:task][:due_date] = due_date
+   start_date = date_from_form(params[:start_dt])
+   params[:task][:start_date] = start_date
 
     if @task.update_attributes(params[:task])
-
       # Delete assignations for which their user_id does not match a user_id in params[:users_assigned]
       assignations = Assignation.where(task_id:@task.id)
       assignations.pluck(:user_id).each { |a|
@@ -88,13 +85,12 @@ class TasksController < ApplicationController
         Assignation.create(task_id: @task.id, user_id: u_id)
         end
       }
+
       flash[:success] = "Task updated"
       redirect_to(task_path(@task))
     else
       render 'edit'
     end
-
-
 
   end
 

@@ -18,7 +18,6 @@ class Notification < ActiveRecord::Base
   validates :user_id, presence: true
   validates :description, presence: true, length: { maximum: 200 }
   # validates :read, presence: true
-  #
 
 
   def self.unread

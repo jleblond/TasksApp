@@ -2,17 +2,18 @@ class Admin::TasksController < ApplicationController
   before_filter :authenticate_user!
   before_filter :role_admin?
 
+
   def index
-    @tasks = Task.all
+   @tasks = Task.all
 
-  if params[:sort_param]=="created_date"
-    @tasks = @tasks.sort_by{|e| e[:created_at]}.reverse
-  elsif params[:sort_param]=="due_date"
-    @tasks = @tasks.sort_by{|e| e[:due_date]}
+   if params[:sort_param]=="created_date"
+     @tasks = @tasks.sort_by{|e| e[:created_at]}.reverse
+   elsif params[:sort_param]=="due_date"
+     @tasks = @tasks.sort_by{|e| e[:due_date]}
+   end
+
   end
 
-
-  end
 
   def search
 # redirect_to admin_tasks_path(params[:task])
@@ -28,13 +29,11 @@ class Admin::TasksController < ApplicationController
       @tasks = @tasks & @u_t
     end
 
-
     respond_to do |format|
       format.html { render :index, :locals => {tasks: @tasks} }
       format.json
       format.js
     end
-
   end
 
 

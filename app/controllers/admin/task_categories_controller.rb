@@ -4,7 +4,6 @@ class Admin::TaskCategoriesController < ApplicationController
 
   def index
     @task_categories = TaskCategory.all
-
   end
 
   def new
@@ -25,7 +24,6 @@ class Admin::TaskCategoriesController < ApplicationController
 
   def edit
    @task_category = TaskCategory.find(params[:id])
-
   end
 
   def update

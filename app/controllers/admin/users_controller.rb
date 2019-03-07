@@ -5,16 +5,17 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.all
-
   end
+
 
   def show
     @user = User.find(params[:id])
   end
 
-  def new
 
+  def new
   end
+
 
   def create
     @user = User.new(params[:user])
@@ -22,7 +23,6 @@ class Admin::UsersController < ApplicationController
       params[:user_roles].each { |r_id|
         UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
       }
-
       flash[:success] = "User created!"
       redirect_to(admin_users_path)
     else
@@ -30,9 +30,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+
   def edit
     @user = User.find(params[:id])
   end
+
 
   def update
     if params[:user][:password].blank?
@@ -63,7 +65,6 @@ class Admin::UsersController < ApplicationController
   end
 
   private
-
 
   def current_user?(user)
     user == current_user
