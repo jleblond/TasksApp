@@ -13,19 +13,27 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <% if current_user.notifications.unread.any? %>
-            <div class="notifications">
-              <% current_user.notifications.unread.each do |notification| %>
-                  <%= link_to edit_notification_path(notification) do %>
-                  <div class="notification row">
-                        <span class="description"><%= notification.description %></span>
-                        <span class="timestamp"> <%= time_ago_in_words(notification.created_at) %> ago. </span>
-                  </div>
-                  <% end %>
-              <% end %>
-            </div>
 
-        <% end %>
+        <div class="list-group">
+
+
+          <% if current_user.notifications.unread.any? %>
+              <% current_user.notifications.unread.each do |notification| %>
+                <%= link_to edit_notification_path(notification), class:"list-group-item list-group-item-action flex-column align-items-start active" do %>
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">  <%= notification.description %>   </h5>
+                  <small>  <%= time_ago_in_words(notification.created_at) %> ago   </small>
+                </div>
+                <p class="mb-1"></p>
+                <small></small>
+                <% end %>
+              <% end %>
+
+
+          <% end %>
+
+
+        </div>
 
       </div>
 

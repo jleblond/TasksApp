@@ -2,29 +2,39 @@
 <% if current_user.notifications.any? %>
 
 
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action active">
-    Cras justo odio
-  </a>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
 
-  <% @notifications.each do |notification| %>
-      <a href="<%= edit_notification_path(notification) %>" class="list-group-item list-group-item-action">
-        <span class="content"><%= notification.description %></span>
-         <span class="timestamp">
-            <%= time_ago_in_words(notification.created_at) %> ago.
-         </span>
+    </tr>
+    </thead>
+    <tbody>
+    <% @notifications.each do |n| %>
+      <tr>
+        <td>
+          <a href="<%= edit_notification_path(n) %>" class="list-group-item list-group-item-action <%= 'active' unless n.read %>">
+            <span class="content"><%= n.description %></span>
+            <span class="timestamp">
+            <%= time_ago_in_words(n.created_at) %> ago.
+            </span>
+          </a>
+        </td>
+        <td>
+          <%= link_to n, method: :delete, data: { confirm: "You sure?" } do %>
+            <span class="glyphicon glyphicon-remove" alt="delete"></span>
+          <% end %>
+        </td>
 
-        <%= link_to notification, method: :delete,
-            data: { confirm: "You sure?" } do %>
-        <span class="glyphicon glyphicon-remove" alt="delete"></span>
-        <% end %>
-      </a>
+      </tr>
+    <% end %>
 
-  <% end %>
+    </tbody>
+  </table>
 
-</div>
+
+
+
 
 <% end %>
-
-
-

@@ -1,12 +1,19 @@
-<h2><%= t("filter_titles.#{params[:filter]}") %></h2>
-(Number of tasks: <%= @tasks.count %>)
-
-<ul>
-  <li> <%= link_to "Tasks Assigned",  tasks_path(filter:"assigned") %> </li>
-  <li> <%= link_to "Tasks Authored",  tasks_path(filter:"authored") %> </li>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <%= link_to "Tasks Assigned",  tasks_path(filter:"assigned"), class:"nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Tasks Authored",  tasks_path(filter:"authored"), class:"nav-link" %>
+  </li>
 </ul>
+</br>
 
 
+<h2><%= t("filter_titles.#{params[:filter]}") %></h2>
+
+
+Number of tasks: <%= @tasks.count %>
+</br></br>
 
 <div class="tasks">
   <table class="table table-hover">
