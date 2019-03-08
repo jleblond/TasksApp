@@ -26,12 +26,12 @@
         <li>
           <%= f.label :start_dt, "Start Date (optional)" %>
           <% start_dt = @task.start_date  %>
-          <%= select_date(start_dt, selected: @task.start_date, prefix: :start_dt, include_blank: true)  %>
+          <%= select_date(start_dt, selected: @task.start_date, prefix: :start_dt, include_blank: true, start_year: Time.now.year)  %>
         </li>
         <li>
           <%= f.label :due_dt, "Due Date" %>
           <% due_dt = @task.due_date  %>
-          <%= select_date(due_dt, selected: @task.due_date, prefix: :due_dt, include_blank: true)  %>
+          <%= select_date(due_dt, selected: @task.due_date, prefix: :due_dt, include_blank: true, start_year: Time.now.year)  %>
         </li>
           <li>
             <%= f.label :status_id, "Status" %>

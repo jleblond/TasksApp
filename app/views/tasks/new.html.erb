@@ -22,12 +22,12 @@
     </div>
     <div class="form-group">
       <%= f.label :start_dt, "Start Date (optional)" %>
-      <%= select_date nil, :prefix => :start_dt, :include_blank => true, class:"form-control" %>
+      <%= select_date nil, :prefix => :start_dt, :include_blank => true, class:"form-control", start_year: Time.now.year  %>
     </div>
 
     <div class="form-group">
       <%= f.label :due_dt, "Due Date" %>
-      <%= select_date nil, :prefix => :due_dt, :include_blank => true, class:"form-control" %>
+      <%= select_date nil, :prefix => :due_dt, :include_blank => true, class:"form-control", start_year: Time.now.year %>
     </div>
 <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>
