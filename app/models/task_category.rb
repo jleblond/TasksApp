@@ -11,6 +11,8 @@
 class TaskCategory < ActiveRecord::Base
   attr_accessible :category
 
+  has_many :tasks, class_name: 'Task', foreign_key: "category_id"
+
   validates :category, presence: true, length: { minimum: 1, maximum: 50 }, uniqueness: { case_sensitive: false }
 
   default_scope order: 'task_categories.category ASC'

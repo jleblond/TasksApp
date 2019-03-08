@@ -24,11 +24,15 @@
           <%= render 'layouts/sidebar' %>
       </nav>
     </div>
+    <% elsif signed_in? %>
+        <div class="col-2 col-sm-2 col-md-3 col-lg-2 col-xl-2">
+        </div>
     <% end %>
 
+
     <div class="col-8 col-sm-9 col-md-8 col-lg-9 col-xl-9">
-      <%= render 'shared/flash_messages' if !flash.empty? %>
-      <%= yield %>
+       <%= render 'shared/flash_messages' if !flash.empty? %>
+       <%= yield %>
     </div>
 
   </div>

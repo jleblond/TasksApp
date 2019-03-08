@@ -1,5 +1,5 @@
-<div class="panel panel-default justify-content-center align-items-center">
-  <div class="panel-heading ">
+<div class="panel panel-info ">
+  <div class="panel-heading text-center">
         <h4> Search Tasks </h4>
   </div>
   <div class="panel-body">
@@ -22,11 +22,12 @@
         <%= label_tag :user_assigned_id, "User Assigned" %><br>
         <%= select_tag :user_assigned_id, options_for_select(User.all.map{|u| [u.name, u.id]}), include_blank: true, class: "form-control" %>
       </div>
-      <div class="actions ">
+      </br>
+      <div class="actions text-right">
         <%= f.submit "Search", class: "btn btn-primary" %>
       </div>
 
     <% end %>
   </div>
-  <div class="panel-footer"></div>
+
 </div>

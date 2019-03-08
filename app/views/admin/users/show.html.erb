@@ -1,7 +1,7 @@
-<aside class="span4">
+<aside class="">
   <section>
     <h1>
-      Account Information
+      <%= @user.name %>
           <%= link_to  edit_admin_user_path(@user) do %>
               <span class="glyphicon glyphicon-edit" alt="edit"></span>
           <% end %>
@@ -9,20 +9,41 @@
   </section>
   <section>
 
-    Name : <%= @user.name %>
-    Email : <%= @user.email %>
-    Last signed in :  <%= @user.last_sign_in_at %>
-    User created : <%= @user.created_at %>
-    Last account update : <%= @user.updated_at %>
-
-    <ul class="user-roles">
-      <% @user.roles.each do |ur| %>
-          <li>
-            <%=   ur.role_name %>
-          </li>
-
-      <% end %>
-    </ul>
+    <table class="table table-sm">
+      <thead>
+      <tr>
+        <th>
+          <% @user.roles.each do |ur| %>
+              <%=   ur.role_name %> &nbsp
+          <% end %>
+        </th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>  Email address :</td>
+        <td> <%= @user.email %> </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>  Last signed in :</td>
+        <td> <%= @user.last_sign_in_at %> </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>User created :</td>
+        <td><%= @user.created_at %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Last account update : </td>
+        <td><%= @user.updated_at %> </td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
 
   </section>
 

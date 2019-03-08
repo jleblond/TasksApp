@@ -3,7 +3,7 @@
 
 <%= form_for(Task.new, :url => { :action => "create" })  do |f| %>
     <div class="form-group">
-      <%= f.label :task_name, "Task Name" %>
+      <%= f.label :task_name, "Task Name (*)" %>
       <%= f.text_field :task_name, class:"form-control" %>
     </div>
     <div class="form-group">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :due_dt, "Due Date" %>
+      <%= f.label :due_dt, "Due Date (*)" %>
       <%= select_date nil, :prefix => :due_dt, :include_blank => true, class:"form-control", start_year: Time.now.year %>
     </div>
 <%= f.submit "Save", class: "btn btn-primary" %>
