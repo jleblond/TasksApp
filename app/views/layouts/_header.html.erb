@@ -1,8 +1,10 @@
 <header>
   <nav class="navbar navbar-inverse container">
+    <!-- Home-->
     <p class="nav navbar-brand"><%= link_to "Tasks App", root_path %></p>
     <ul class="nav navbar-nav">
 
+      <!-- User Tasks -->
       <% if signed_in? %>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> My Tasks
@@ -12,6 +14,7 @@
             <li><%= link_to "Tasks authored", tasks_path(filter:"authored")  %></li>
           </ul>
         </li>
+        <!-- New Task -->
         <li>
           <%= link_to new_task_path do %>
               <span class="glyphicon glyphicon-plus"></span> New Task
@@ -21,14 +24,29 @@
 
     </ul>
 
+
     <ul class="nav navbar-nav navbar-right">
       <% if signed_in? %>
+        <!-- Notifications-->
         <li>
+          <!-- Has unread notifications, show modal-->
+          <% if current_user.notifications.unread.count > 0 %>
               <a data-toggle="modal" data-target="#myModal">
-                <span class="glyphicon glyphicon-bell"></span> <%= current_user.notifications.unread.count %>
+                <span class="glyphicon glyphicon-bell"></span>
+
+                  <span class="badge">
+                    <%= current_user.notifications.unread.count %>
+                  </span>
               </a>
+          <% else %>
+          <!-- No unread notifications, go to notifications index -->
+            <%= link_to notifications_path do %>
+              <span class="glyphicon glyphicon-bell"></span> Notifications
+            <% end %>
+          <% end %>
         </li>
 
+        <!-- Account -->
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="glyphicon glyphicon-user"></span> <%= current_user.name %>
             <span class="caret"></span></a>

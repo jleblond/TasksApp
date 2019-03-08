@@ -1,9 +1,9 @@
-<ul class="nav nav-pills">
-  <li class="nav-item">
-    <%= link_to "Tasks Assigned",  tasks_path(filter:"assigned"), class:"nav-link" %>
+<ul class="nav nav-tabs">
+  <li role="presentation" >
+    <%= link_to "Tasks Assigned",  tasks_path(filter:"assigned") %>
   </li>
-  <li class="nav-item">
-    <%= link_to "Tasks Authored",  tasks_path(filter:"authored"), class:"nav-link" %>
+  <li role="presentation" >
+    <%= link_to "Tasks Authored",  tasks_path(filter:"authored")%>
   </li>
 </ul>
 </br>

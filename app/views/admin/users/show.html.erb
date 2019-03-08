@@ -11,6 +11,9 @@
 
     Name : <%= @user.name %>
     Email : <%= @user.email %>
+    Last signed in :  <%= @user.last_sign_in_at %>
+    User created : <%= @user.created_at %>
+    Last account update : <%= @user.updated_at %>
 
     <ul class="user-roles">
       <% @user.roles.each do |ur| %>
@@ -23,6 +26,6 @@
 
   </section>
 
-  <%= @user.inspect %>
+  <%  #@user.inspect %>
 
 </aside>

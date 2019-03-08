@@ -1,4 +1,4 @@
-<h2>Create a User [as an admin]</h2>
+<h2>Add User</h2>
 
 <%= form_for(User.new, :url => { :action => "create" }) do |f| %>
 
@@ -36,7 +36,7 @@
 
 
   <div class="actions">
-    <%= f.submit "Create User" %>
+    <%= f.submit "Save", class:"btn btn-primary" %>
   </div>
 <% end %>
 

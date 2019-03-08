@@ -2,7 +2,7 @@ class UserObserver < ActiveRecord::Observer
   observe :user
 
   def after_create(user)
-    notif_message = "User "+user.name+" created"
+    notif_message = "User "+user.name+"was created"
 
     if User.current.present?
       notif_message +=  "by "+User.current

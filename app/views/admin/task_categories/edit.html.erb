@@ -1,18 +1,19 @@
-<h2>Edit Task Category</h2>
+
 
 <div class="row">
   <div class="span6 offset3">
+    <h2>Edit Category</h2>
     <%= form_for [:admin, @task_category] do |f| %>
 
         <%= f.label :category, "Task Category" %>
-        <%= f.text_field :category, placeholder: @task_category.category %>
+        <%= f.text_field :category, placeholder: @task_category.category, class:"form-control" %>
 
 
-        <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+        <%= f.submit "Save", class: "btn btn-primary" %>
     <% end %>
-
-     <%= link_to [:admin, @task_category], method: :delete,
-            data: { confirm: "You sure?" } do %>
+   </br></br>
+     <%= link_to [:admin, @task_category], method: :delete, data: { confirm: "You sure?" } do %>
+            Delete
             <span class="glyphicon glyphicon-trash" alt="delete"></span>
      <% end %>
   </div>
