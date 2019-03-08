@@ -32,7 +32,6 @@ GEM
       rake
     arel (3.0.3)
     bcrypt (3.1.12)
-    bootstrap-sass (2.1.0.0)
     builder (3.0.4)
     capybara (1.1.2)
       mime-types (>= 1.16)
@@ -70,6 +69,8 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.10.0)
+    haml (4.0.7)
+      tilt
     hike (1.2.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -183,11 +184,11 @@ PLATFORMS
 DEPENDENCIES
   annotate (= 2.5.0)
   bcrypt
-  bootstrap-sass (= 2.1)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
   devise
   execjs
+  haml (= 4.0.7)
   jquery-rails (= 2.0.2)
   libv8 (= 3.16.14.3)
   nokogiri (= 1.6.8)
