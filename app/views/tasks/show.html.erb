@@ -6,44 +6,56 @@
 <% end %>
 </h2>
 
+</br>
+
+
+<div class="">
+  <div class="">
+    <div class="panel panel-primary">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        Status: &nbsp&nbsp
+        <%= if @task.status.present?
+              @task.status.status
+            end
+        %>
+      </div>
+      <!-- List group -->
+      <ul class="list-group">
+        <li class="list-group-item">Created by: &nbsp&nbsp <%=  @task.author.name %> (<%=  @task.author.email %>) </li>
+        <li class="list-group-item">    Category: &nbsp&nbsp
+          <%= if @task.category.present?
+                @task.category.category
+              end
+          %>
+        </li>
+        <li class="list-group-item">Description: &nbsp&nbsp <%=     @task.description  %></li>
+        <li class="list-group-item"> Assigned to: &nbsp&nbsp
+          <% @task.users_assigned.each do |u| %>
+
+              <%=   u.name %>
+              (<%=   u.email %>)
+
+          <% end %>
+        </li>
+        <li class="list-group-item">Start Date: &nbsp&nbsp <%=     @task.start_date.to_s  %></li>
+        <li class="list-group-item">DUE DATE: &nbsp&nbsp <%=     @task.due_date.to_s  %></li>
+
+      </ul>
+      <div class="panel-body">
+
+      </div>
+
+
+    </div>
 
 
 
-<div class="row">
-  <div class="span6 offset3">
-    TASK: <%=  @task.task_name  %>
-    Created by: <%=  @task.author.name %> <%=  @task.author.email %>
-    Description: <%=     @task.description  %>
 
-    Category:
-    <%= if @task.category.present?
-            @task.category.category
-        end
-    %>
-
-
-    <ul class="users-assigned">
-      Assigned to:
-      <% @task.users_assigned.each do |u| %>
-          <li>
-            <%=   u.id %>
-            <%=   u.name %>
-            <%=   u.email %>
-          </li>
-
-      <% end %>
-    </ul>
-    Start Date: <%=     @task.start_date.to_s  %>
-    DUE DATE: <%=    @task.due_date.to_s  %>
-    Status:
-    <%= if @task.status.present?
-          @task.status.status
-        end
-    %>
-
-
+    </br></br>
 
     <%= render :partial => 'comment_form', :locals => { :task_id => @task.id, :user_id => current_user.id }  %>
+    </br>
     <div class="comments"> <%= render :partial => 'tasks/comments' %> </div>
 
 

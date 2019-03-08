@@ -12,4 +12,6 @@ class TaskCategory < ActiveRecord::Base
   attr_accessible :category
 
   validates :category, presence: true, length: { minimum: 1, maximum: 50 }, uniqueness: { case_sensitive: false }
+
+  default_scope order: 'task_categories.category ASC'
 end

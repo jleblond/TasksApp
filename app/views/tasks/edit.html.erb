@@ -1,48 +1,45 @@
-<h2>Task: <%=  @task.task_name %> </h2>
+<div class="">
+<h2>Task: <%=  @task.task_name %></h2>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@task)  do |f| %>
-      <ul>
-        <li>
-          <%= f.label :task_name, "Task Name" %>
-          <%= f.text_field :task_name %>
-        </li>
+<%= form_for(@task)  do |f|  %>
+    <div class="form-group">
+      <%= f.label :task_name, "Task Name" %>
+      <%= f.text_field :task_name, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class:"form-control", cols: "30", rows: "7" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :users_assigned, "User Assigned to this Task" %><br>
+      <%= select_tag :users_assigned,
+                     options_for_select(User.all.collect {|x| [x.name, x.id]}, selected: @users_assigned_ids), multiple: true
+      %>
+    </div>
+    <div class="form-group">
+      <%= f.label :category_id, "Task Category" %><br>
+      <%= f.collection_select :category_id, TaskCategory.all, :id, :category, {include_blank: true}, {class: "form-control"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :start_dt, "Start Date (optional)" %>
+      <% start_dt = @task.start_date  %>
+      <%= select_date(start_dt, selected: @task.start_date, prefix: :start_dt, include_blank: true, start_year: Time.now.year)  %>
+    </div>
 
-        <li>
-          <%= f.label :description %>
-          <%= f.text_area :description %>
-        </li>
-        <li>
-          <%= f.label :users_assigned, "User Assigned to this Task" %><br>
-          <%= select_tag :users_assigned,
-                             options_for_select(User.all.collect {|x| [x.name, x.id]}, selected: @users_assigned_ids), multiple: true
-          %>
-        </li>
-        <li>
-          <%= f.label :category_id, "Task Category" %><br>
-          <%= f.collection_select :category_id, @task_categories, :id, :category, include_blank: true %>
-        </li>
-        <li>
-          <%= f.label :start_dt, "Start Date (optional)" %>
-          <% start_dt = @task.start_date  %>
-          <%= select_date(start_dt, selected: @task.start_date, prefix: :start_dt, include_blank: true, start_year: Time.now.year)  %>
-        </li>
-        <li>
-          <%= f.label :due_dt, "Due Date" %>
-          <% due_dt = @task.due_date  %>
-          <%= select_date(due_dt, selected: @task.due_date, prefix: :due_dt, include_blank: true, start_year: Time.now.year)  %>
-        </li>
-          <li>
-            <%= f.label :status_id, "Status" %>
-            <%= f.collection_select :status_id, @task_statuses, :id, :status, include_blank: true %>
-          </li>
+    <div class="form-group">
+      <%= f.label :due_dt, "Due Date" %>
+      <% due_dt = @task.due_date  %>
+      <%= select_date(due_dt, selected: @task.due_date, prefix: :due_dt, include_blank: true, start_year: Time.now.year)  %>
+    </div>
 
-        <%= f.submit "Update", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <div class="form-group">
+      <%= f.label :status_id, "Status" %>
+      <%= f.collection_select :status_id, @task_statuses, :id, :status, include_blank: true %>
+    </div>
+<%= f.submit "Update", class: "btn btn-primary" %>
+<% end %>
 
-
-    </ul>
-
-  </div>
 </div>
+
+
+

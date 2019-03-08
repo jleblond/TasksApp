@@ -1,10 +1,19 @@
-<h4>User Comments</h4>
+<h4>User Comments </h4>
+</br>
 
-<% @task.comments.each do |c| %>
-    <li>
-      <%=   c.user.name %>
-      <%=   c.created_at %>
-      <%=   c.text %>
+  <% @task.comments.each do |c| %>
+  <div class="panel panel-info">
+      <div class="panel-heading">
+        <h6 class="panel-title">
+          <%=   c.user.name %>
+          <span class="pull-right">
+            <%=   c.created_at %>
+          </span>
+        </h6>
+      </div>
+      <div class="panel-body">
+        <%=   c.text %>
+      </div>
+  </div>
+  <% end %>
 
-    </li>
-<% end %>

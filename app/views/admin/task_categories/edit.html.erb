@@ -1,20 +1,26 @@
-
-
-<div class="row">
-  <div class="span6 offset3">
+<div class="">
+  <div class="">
     <h2>Edit Category</h2>
+    <div class="text-right">
+      <%= link_to [:admin, @task_category], method: :delete, data: { confirm: "You sure?" } do %>
+      <button type="button" class="btn btn-danger">
+        Delete <span class="glyphicon glyphicon-trash" alt="delete"></span>
+      </button>
+      <% end %>
+    </div>
     <%= form_for [:admin, @task_category] do |f| %>
-
-        <%= f.label :category, "Task Category" %>
-        <%= f.text_field :category, placeholder: @task_category.category, class:"form-control" %>
-
+        <div class="form-group">
+          <%= f.label :category, "Task Category" %>
+          <%= f.text_field :category, placeholder: @task_category.category, class:"form-control" %>
+        </div>
 
         <%= f.submit "Save", class: "btn btn-primary" %>
+
     <% end %>
+
    </br></br>
-     <%= link_to [:admin, @task_category], method: :delete, data: { confirm: "You sure?" } do %>
-            Delete
-            <span class="glyphicon glyphicon-trash" alt="delete"></span>
-     <% end %>
+
+
+
   </div>
 </div>

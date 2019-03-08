@@ -8,7 +8,7 @@
     </div>
     <div class="form-group">
       <%= f.label :description %>
-      <%= f.text_area :description, class:"form-control" %>
+      <%= f.text_area :description, class:"form-control", cols: "30", rows: "7" %>
     </div>
     <div class="form-group">
       <%= fields_for :users_assigned do |users_assigned_form| %>
@@ -18,7 +18,7 @@
     </div>
     <div class="form-group">
       <%= f.label :category_id, "Task Category" %><br>
-      <%= f.collection_select :category_id, @task_categories, :id, :category, include_blank: true, class:"form-control" %>
+      <%= f.collection_select :category_id, TaskCategory.all, :id, :category, {include_blank: true}, {class: "form-control"} %>
     </div>
     <div class="form-group">
       <%= f.label :start_dt, "Start Date (optional)" %>

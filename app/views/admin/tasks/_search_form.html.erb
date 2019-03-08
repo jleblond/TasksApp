@@ -1,25 +1,32 @@
-<%= form_for(Task.new, :url => admin_tasks_search_path, remote: true)  do |f| %>
-  <ul>
-    <li>
-      <%= f.label :category_id, "Task Category" %><br>
-      <%= f.collection_select :category_id, TaskCategory.all, :id, :category, include_blank: true %>
-    </li>
+<div class="panel panel-default justify-content-center align-items-center">
+  <div class="panel-heading ">
+        <h4> Search Tasks </h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for(Task.new, :url => admin_tasks_search_path, remote: true)  do |f| %>
 
-    <li>
-      <%= f.label :status_id, "Status" %>
-      <%= f.collection_select :status_id, TaskStatus.all, :id, :status, include_blank: true %>
-    </li>
-    <li>
-      <%= f.label :author_id, "Author" %><br>
-      <%= f.select :author_id, options_for_select(User.all.map{|u| [u.name, u.id]}), include_blank: true %>
-    </li>
-    <li>
-      <%= label_tag :user_assigned_id, "User Assigned" %><br>
-      <%= select_tag :user_assigned_id, options_for_select(User.all.map{|u| [u.name, u.id]}), include_blank: true %>
-    </li>
-  </ul>
+      <div class="field">
+        <%= f.label :category_id, "Task Category" %><br>
+        <%= f.collection_select :category_id, TaskCategory.all, :id, :category, {include_blank: true}, {class: "form-control"} %>
+      </div>
 
-    <%= f.submit "Search", class: "btn btn-large btn-primary" %>
-<% end %>
+      <div class="field">
+        <%= f.label :status_id, "Status" %>
+        <%= f.collection_select :status_id, TaskStatus.all, :id, :status, {include_blank: true}, {class: "form-control"} %>
+      </div>
+      <div class="field">
+        <%= f.label :author_id, "Author" %><br>
+        <%= f.select :author_id, options_for_select(User.all.map{|u| [u.name, u.id]}), {include_blank: true}, {class: "form-control"} %>
+      </div>
+      <div class="field">
+        <%= label_tag :user_assigned_id, "User Assigned" %><br>
+        <%= select_tag :user_assigned_id, options_for_select(User.all.map{|u| [u.name, u.id]}), include_blank: true, class: "form-control" %>
+      </div>
+      <div class="actions ">
+        <%= f.submit "Search", class: "btn btn-primary" %>
+      </div>
 
-
+    <% end %>
+  </div>
+  <div class="panel-footer"></div>
+</div>
