@@ -15,7 +15,7 @@ class TasksController < ApplicationController
 
 
   def new
-    @users = User.all # used in the form to select users to whom the task will be assigned to
+    @users = User.active
     @task_categories = TaskCategory.all
   end
 
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   def edit
     @task= Task.find(params[:id])
 
-    @users = User.all # used in the form to select users to whom the task will be assigned to
+    @users = User.active
     @task_categories = TaskCategory.all
     @task_statuses = TaskStatus.all
 

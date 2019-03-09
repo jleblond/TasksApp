@@ -38,6 +38,14 @@ class Admin::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @user_roles_ids = @user.roles.pluck(:role_id)
+
+    if @user.active
+      @panel_title = "Deactivate account"
+      @btn_text = "Set Inactive"
+    else
+      @panel_title = "Activate account"
+      @btn_text = "Set Active"
+    end
   end
 
 
@@ -66,14 +74,34 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if User.find(params[:id]).destroy
-      flash[:notice] = "User deleted"
-      redirect_to(admin_users_path)
-    elsif
-      flash[:alert] = "User not deleted"
-      redirect_to(admin_user_path(@user))
-    end
+    # if User.find(params[:id]).destroy
+    #   flash[:notice] = "User deleted"
+    #   redirect_to(admin_users_path)
+    # elsif
+    #   flash[:alert] = "User not deleted"
+    #   redirect_to(admin_user_path(@user))
+    # end
   end
+
+  def activation
+    @user = User.find(params[:id])
+
+    if @user.active
+      message = "deactivation"
+    else
+      message = "activation"
+    end
+
+    if @user.update_attributes(active: !@user.active)
+      flash[:notice] = "User "+message+" successful"
+    elsif
+      flash[:alert] = "User "+message+" unsuccessful"
+    end
+
+    redirect_to admin_user_path(@user) 
+  end
+
+
 
 
   private

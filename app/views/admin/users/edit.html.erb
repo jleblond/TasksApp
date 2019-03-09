@@ -1,66 +1,90 @@
-<h2>Edit User</h2>
+<h2>
+  <%= @user.name %>
+
+  <% if !@user.active %>
+    <small><span class="label label-default">Inactive</span></small>
+  <% end %>
+</h2>
 
 <div class="row">
-  <div class="col-sm-6 mb-3 mb-md-0">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title">Update Account</h3>
-      </div>
-      <div class="panel-body">
-        <%= form_for(@user, url: admin_user_path(@user), html: { method: :put }) do |f| %>
-
-
-        <div class="field">
-          <%= f.label :name %> <br />
-          <%= f.text_field :name %>
+  <% if @user.active %>
+    <div class="col-sm-6 mb-3 mb-md-0">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Update Account</h3>
         </div>
-
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true %>
-        </div>
+        <div class="panel-body">
+          <%= form_for(@user, url: admin_user_path(@user), html: { method: :put }) do |f| %>
 
 
+            <div class="field">
+              <%= f.label :name %> <br />
+              <%= f.text_field :name %>
+            </div>
 
-        <div class="field">
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true %>
+            </div>
 
-        <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        </div>
 
-        <div class="field">
-          <%= f.label :user_roles, "User Roles" %><br>
-          <%= select_tag :user_roles,
-                         options_for_select(Role.all.collect {|x| [x.role_name, x.id]}, selected: @user_roles_ids),
-              multiple: true, include_blank: true
-          %>
 
-        </div>
+            <div class="field">
+              <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+              <%= f.password_field :password, autocomplete: "off" %>
+            </div>
 
-        <div class="actions text-right">
-          <%= f.submit "Update", class:"btn btn-primary" %>
-              </div>
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+
+            <div class="field">
+              <%= f.label :user_roles, "User Roles" %><br>
+              <%= select_tag :user_roles,
+                             options_for_select(Role.all.collect {|x| [x.role_name, x.id]}, selected: @user_roles_ids),
+                             multiple: true, include_blank: true
+              %>
+
+            </div>
+
+            <div class="actions text-right">
+              <%= f.submit "Update", class:"btn btn-primary" %>
+            </div>
           <% end %>
+        </div>
       </div>
+
     </div>
 
+  <% else %>
 
+  <% end %>
 
-  </div>
 
   <div class="col-sm-6">
     <div class="panel panel-warning">
+
       <div class="panel-heading">
-        <h3 class="panel-title">Delete account</h3>
+        <h3 class="panel-title"><%= @panel_title %></h3>
       </div>
+
       <div class="panel-body">
-        <%= button_to "Delete account", admin_user_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+        <% #button_to "Delete account", admin_user_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+        <%= button_to @btn_text, activation_admin_user_path(@user), data: { confirm: "Are you sure?" }, method: :put, class: 'btn btn-warning' %>
       </div>
     </div>
+
+
+<!--    <div class="panel panel-danger">-->
+<!--      <div class="panel-heading">-->
+<!--        <h3 class="panel-title">Delete</h3>-->
+<!--      </div>-->
+
+<!--      <div class="panel-body">-->
+        <%# button_to "Delete account", admin_user_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
+<!--      </div>-->
+<!--    </div>-->
 
 
   </div>

@@ -1,11 +1,22 @@
 <aside class="">
   <section>
-    <h1>
+
+    <h2>
       <%= @user.name %>
-          <%= link_to  edit_admin_user_path(@user) do %>
-              <span class="glyphicon glyphicon-edit" alt="edit"></span>
-          <% end %>
-    </h1>
+
+      <%= link_to  edit_admin_user_path(@user), class:"pull-right" do %>
+        <span class="glyphicon glyphicon-edit" alt="edit"></span>
+      <% end %>
+
+      <% if @user.active %>
+
+      <% else %>
+        <small><span class="label label-default">Inactive</span></small>
+      <% end %>
+    </h2>
+
+
+
   </section>
   <section>
 

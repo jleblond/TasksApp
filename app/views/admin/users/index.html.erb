@@ -20,6 +20,11 @@ Number of users: <%= @users.count%>
         <td> <%=   u.name %> </td>
         <td> <%=   u.email %> </td>
         <td>
+          <% unless u.active %>
+            <span class="label label-default">Inactive</span>
+          <% end %>
+        </td>
+        <td>
           <%= link_to  admin_user_path(u) do %>
               <span class="glyphicon glyphicon-eye-open" alt="show"></span>
           <% end %>

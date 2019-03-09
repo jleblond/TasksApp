@@ -32,6 +32,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :name
       t.string :email
+      t.boolean :active, default: true
 
       t.timestamps null: false
     end

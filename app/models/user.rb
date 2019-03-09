@@ -14,6 +14,7 @@
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
 #  name                   :string(255)
+#  active                 :boolean          default(TRUE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -28,7 +29,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :title, :body
 
-  attr_accessible :email, :name
+  attr_accessible :email, :name, :active
 
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
@@ -60,10 +61,16 @@ class User < ActiveRecord::Base
     Thread.current[:user] = user
   end
 
+  def self.active
+    where(active: true)
+  end
+
   def admin?
     @admin_role = Role.admin_role
     self.roles.exists?(@admin_role)
   end
+
+
 
   # def regular?
   #   @regular_role = Role.regular_role

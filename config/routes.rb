@@ -54,7 +54,7 @@ TasksApp::Application.routes.draw do
   end
 
   match 'admin/tasks/search' => 'admin/tasks#search', :as => :admin_tasks_search, via: [:post]
-
+  match 'admin/users/:id/activation' => 'admin/users#activation', :as => :activation_admin_user, via: [:put]
 
   root to: 'home#index'
 

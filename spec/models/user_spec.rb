@@ -14,6 +14,7 @@
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
 #  name                   :string(255)
+#  active                 :boolean          default(TRUE)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
