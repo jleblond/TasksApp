@@ -91,11 +91,13 @@ class TasksController < ApplicationController
       }
 
       # Create assignations that were added to the form
-      params[:users_assigned].each { |u_id|
-        if !u_id.blank? && Assignation.where(task_id: @task.id, user_id: u_id).empty?
-        Assignation.create(task_id: @task.id, user_id: u_id)
-        end
-      }
+      if params[:users_assigned].present?
+        params[:users_assigned].each { |u_id|
+          if !u_id.blank? && Assignation.where(task_id: @task.id, user_id: u_id).empty?
+            Assignation.create(task_id: @task.id, user_id: u_id)
+          end
+        }
+      end
 
       flash[:notice] = "Task updated"
       redirect_to(task_path(@task))

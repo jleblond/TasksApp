@@ -23,11 +23,11 @@ class Task < ActiveRecord::Base
 
   belongs_to :status, class_name: 'TaskStatus', foreign_key:"status_id"
 
-  has_many :assignations
+  has_many :assignations, dependent: :destroy
   has_many :users_assigned, through: :assignations, source: :user
   accepts_nested_attributes_for :users_assigned
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
 
   validates :task_name, presence: true, length: { maximum: 50 }

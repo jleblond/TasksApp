@@ -11,7 +11,7 @@
 class TaskCategory < ActiveRecord::Base
   attr_accessible :category
 
-  has_many :tasks, class_name: 'Task', foreign_key: "category_id"
+  has_many :tasks, class_name: 'Task', foreign_key: "category_id", dependent: :nullify
 
   validates :category, presence: true, length: { minimum: 1, maximum: 50 }, uniqueness: { case_sensitive: false }
 

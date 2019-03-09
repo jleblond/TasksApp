@@ -11,7 +11,7 @@
 class Role < ActiveRecord::Base
   attr_accessible :role_name
 
-  has_many :user_roles
+  has_many :user_roles, dependent: :destroy
   has_many :users, through: :user_roles
 
   validates :role_name, presence: true, length: {maximum: 50}, uniqueness: { case_sensitive: false }

@@ -11,5 +11,7 @@
 class TaskStatus < ActiveRecord::Base
   attr_accessible :status
 
+  has_many :tasks, class_name: 'Task', foreign_key: "category_id", dependent: :nullify
+
   validates :status, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
 end

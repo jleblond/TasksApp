@@ -7,7 +7,7 @@
       <!-- User Tasks -->
       <% if signed_in? %>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> My Tasks
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <span class="glyphicon glyphicon-tasks"></span> My Tasks
             <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Tasks assignations", tasks_path(filter:"assigned")   %></li>
@@ -56,6 +56,7 @@
           </ul>
         </li>
       <% else %>
+        <li><a href="<%=new_user_registration_path%>" alt="Sign up"> <span class="glyphicon glyphicon-user"></span> Sign up </a> </li>
         <li><a href="<%=new_session_path(:user)%>" alt="Log in"> <span class="glyphicon glyphicon-log-in"></span> Log in </a> </li>
       <% end %>
     </ul>

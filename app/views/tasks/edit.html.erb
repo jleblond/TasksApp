@@ -13,7 +13,7 @@
     <div class="form-group">
       <%= f.label :users_assigned, "User Assigned to this Task" %><br>
       <%= select_tag :users_assigned,
-                     options_for_select(User.all.collect {|x| [x.name, x.id]}, selected: @users_assigned_ids), multiple: true
+                     options_for_select(User.all.collect {|x| [x.name, x.id]}, selected: @users_assigned_ids), include_blank: true, multiple: true
       %>
     </div>
     <div class="form-group">
