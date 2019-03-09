@@ -59,9 +59,13 @@ class Admin::UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       UserRole.delete_all(user_id: @user.id)
     #  UserRole.create(user_id: @user.id, role_id: Role.regular_role.id)
-      params[:user_roles].each { |r_id|
-        UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
-      }
+    #
+      if params[:user_roles].present?
+        params[:user_roles].each { |r_id|
+          UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
+        }
+      end
+
       flash[:notice] = "Profile updated"
       redirect_to(admin_user_path(@user))
     else
@@ -88,17 +92,21 @@ class Admin::UsersController < ApplicationController
 
     if @user.active
       message = "deactivation"
+      @user.password = Devise.friendly_token.first(8) #generated password
     else
       message = "activation"
     end
 
-    if @user.update_attributes(active: !@user.active)
+
+    @user.toggle(:active)
+
+    if @user.save
       flash[:notice] = "User "+message+" successful"
     elsif
       flash[:alert] = "User "+message+" unsuccessful"
     end
 
-    redirect_to admin_user_path(@user) 
+    redirect_to admin_user_path(@user)
   end
 
 
