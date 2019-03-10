@@ -63,16 +63,34 @@
 
 
   <div class="col-sm-6">
-    <div class="panel panel-warning">
 
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= @panel_title %></h3>
+      <div class="panel panel-warning">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">User Roles</h3>
+        </div>
+
+        <div class="panel-body">
+         
+        </div>
       </div>
 
-      <div class="panel-body">
-        <% #button_to "Delete account", admin_user_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
-        <%= button_to @btn_text, activation_admin_user_path(@user), data: { confirm: "Are you sure?" }, method: :put, class: 'btn btn-warning' %>
-      </div>
+
+      <div class="panel panel-danger">
+
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @panel_title %></h3>
+        </div>
+
+        <div class="panel-body">
+          <% if @user != current_user %>
+            <%= button_to @btn_text, activation_admin_user_path(@user), data: { confirm: "Are you sure?" }, method: :put, class: 'btn btn-danger' %>
+          <% else %>
+            This action is not permitted on your own account
+          <% end %>
+        </div>
+     </div>
+
     </div>
 
 

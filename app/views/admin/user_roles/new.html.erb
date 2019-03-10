@@ -1,0 +1,15 @@
+<%= form_for(UserRole.new, url: admin_user_path(@user), html: { method: :post}) do |form| %>
+
+  <div class="field">
+    <%= form.label :user_roles, "User Roles" %><br>
+    <%= select_tag :user_roles,
+                   options_for_select(Role.all.collect {|x| [x.role_name, x.id]}, selected: @user_roles_ids),
+                   multiple: true, include_blank: true
+    %>
+
+  </div>
+
+  <div class="actions text-right">
+    <%= f.submit "Update", class:"btn btn-primary" %>
+  </div>
+<% end %>

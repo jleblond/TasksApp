@@ -49,9 +49,13 @@ TasksApp::Application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :user_roles
     resources :task_categories
     resources :tasks
   end
+
+
+
 
   match 'admin/tasks/search' => 'admin/tasks#search', :as => :admin_tasks_search, via: [:post]
   match 'admin/users/:id/activation' => 'admin/users#activation', :as => :activation_admin_user, via: [:put]
