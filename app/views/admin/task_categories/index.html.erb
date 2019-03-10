@@ -1,4 +1,7 @@
-<h2>Task Categories</h2>
+<h2>
+  Task Categories
+  <%= button_to "+ New Category", new_admin_task_category_path, method: :get, class: 'btn btn-primary pull-right' %>
+</h2>
 Number of categories: <%= @task_categories.count%>
 </br> </br>
 

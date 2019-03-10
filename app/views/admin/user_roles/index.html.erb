@@ -1,0 +1,58 @@
+<h2>User Roles</h2>
+Number of roles: <%= @roles.count%>
+<br></br>
+
+<% @result.each do |key, value| %>
+  <h4><%= Role.find(key).role_name %></h4>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">ID (#)</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% value.each do |u_r| %>
+    <% @user = User.find(u_r.user_id) %>
+      <tr>
+        <th scope="row"> <%=   @user.id %> </th>
+        <td>
+          <%=   @user.name %>
+          <% unless @user.active %>
+            <span class="label label-default">Inactive</span>
+          <% end %>
+        </td>
+        <td> <%=   @user.email %> </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          <%= link_to  admin_user_path(@user) do %>
+            <span class="glyphicon glyphicon-eye-open" alt="show"></span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to  edit_admin_user_path(@user) do %>
+            <span class="glyphicon glyphicon-edit" alt="edit"></span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to admin_user_role_path(u_r),
+                      data: {:confirm => 'Are you sure?'}, :method => :delete  do %>
+            <span class="glyphicon glyphicon-minus" alt="remove"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+  </br></br>
+<% end %>
+

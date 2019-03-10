@@ -39,15 +39,6 @@
               <%= f.password_field :password_confirmation, autocomplete: "off" %>
             </div>
 
-            <div class="field">
-              <%= f.label :user_roles, "User Roles" %><br>
-              <%= select_tag :user_roles,
-                             options_for_select(Role.all.collect {|x| [x.role_name, x.id]}, selected: @user_roles_ids),
-                             multiple: true, include_blank: true
-              %>
-
-            </div>
-
             <div class="actions text-right">
               <%= f.submit "Update", class:"btn btn-primary" %>
             </div>
@@ -64,6 +55,8 @@
 
   <div class="col-sm-6">
 
+    <% if @user.active %>
+
       <div class="panel panel-warning">
 
         <div class="panel-heading">
@@ -71,10 +64,24 @@
         </div>
 
         <div class="panel-body">
-         
+          <%= form_for(@user, url:  permissions_admin_user_roles_path, html: { method: :put }) do |form| %>
+
+            <div class="field">
+              <%= form.label :user_roles, "User Roles" %><br>
+              <%= select_tag :user_roles,
+                             options_for_select(Role.all.collect {|x| [x.role_name, x.id]}, selected: @user_roles_ids),
+                             multiple: true, include_blank: true
+              %>
+
+            </div>
+
+            <div class="actions">
+              <%= form.submit "Change Permissions", class:"btn btn-warning" %>
+            </div>
+          <% end %>
         </div>
       </div>
-
+    <% end %>
 
       <div class="panel panel-danger">
 

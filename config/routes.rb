@@ -49,7 +49,7 @@ TasksApp::Application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :user_roles
+    resources :user_roles 
     resources :task_categories
     resources :tasks
   end
@@ -59,6 +59,7 @@ TasksApp::Application.routes.draw do
 
   match 'admin/tasks/search' => 'admin/tasks#search', :as => :admin_tasks_search, via: [:post]
   match 'admin/users/:id/activation' => 'admin/users#activation', :as => :activation_admin_user, via: [:put]
+  match 'admin/users/:id/permissions' => 'admin/user_roles#permissions', :as => :permissions_admin_user_roles, via: [:put]
 
   root to: 'home#index'
 

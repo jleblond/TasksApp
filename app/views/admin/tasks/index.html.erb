@@ -1,6 +1,8 @@
-<h2>Tasks</h2>
+<h2>
+  Tasks <%= button_to "+ New Task", new_task_path, method: :get, class: 'btn btn-primary pull-right' %>
+</h2>
 
-</br></br>
+</br></br></br></br>
 
 <div class="search-form">
   <%= render :partial => 'search_form'  %>

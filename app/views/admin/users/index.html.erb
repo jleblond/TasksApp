@@ -1,5 +1,10 @@
-<h2>List of Users</h2>
+<h2>
+  Users
+  <%= button_to "+ New User", new_admin_user_path, method: :get, class: 'btn btn-primary pull-right' %>
+</h2>
 Number of users: <%= @users.count%>
+
+
 <br></br>
 
 
@@ -17,12 +22,14 @@ Number of users: <%= @users.count%>
   <% @users.each do |u| %>
       <tr>
         <th scope="row"> <%=   u.id %> </th>
-        <td> <%=   u.name %> </td>
-        <td> <%=   u.email %> </td>
         <td>
+          <%=   u.name %>
           <% unless u.active %>
             <span class="label label-default">Inactive</span>
           <% end %>
+        </td>
+        <td> <%=   u.email %> </td>
+        <td>
         </td>
         <td>
           <%= link_to  admin_user_path(u) do %>

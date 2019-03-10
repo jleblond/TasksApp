@@ -20,12 +20,6 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      if params[:user_roles].present?
-        params[:user_roles].each { |r_id|
-          UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
-        }
-      end
-
       flash[:notice] = "User created!"
       redirect_to(admin_users_path)
     else
@@ -57,14 +51,6 @@ class Admin::UsersController < ApplicationController
 
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      UserRole.delete_all(user_id: @user.id)
-    #  UserRole.create(user_id: @user.id, role_id: Role.regular_role.id)
-    #
-      if params[:user_roles].present?
-        params[:user_roles].each { |r_id|
-          UserRole.create(user_id: @user.id, role_id: r_id) if !r_id.blank?
-        }
-      end
 
       flash[:notice] = "Profile updated"
       redirect_to(admin_user_path(@user))
@@ -96,7 +82,6 @@ class Admin::UsersController < ApplicationController
     else
       message = "activation"
     end
-
 
     @user.toggle(:active)
 

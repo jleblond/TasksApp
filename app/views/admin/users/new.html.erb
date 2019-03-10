@@ -1,4 +1,4 @@
-<h2>Add User</h2>
+<h2>New User</h2>
 
 <%= form_for(User.new, :url => { :action => "create" }) do |f| %>
 
@@ -24,15 +24,6 @@
   <div class="form-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-      <%= f.label :user_roles, "User Roles" %><br>
-      <%= select_tag :user_roles,
-                     options_for_select(Role.all.collect {|x| [x.role_name, x.id]},  selected: @user_roles_ids), multiple: true, include_blank: true
-
-      %>
-
   </div>
 
 
