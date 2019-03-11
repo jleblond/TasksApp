@@ -1,28 +1,27 @@
-
-  <section>
-    <h2>
-      My Account
-      <%= link_to  edit_user_path(current_user), class:"pull-right" do %>
-          <span class="glyphicon glyphicon-edit" alt="edit"></span>
+<section>
+  <h2>
+    My Account
+    <%= link_to  edit_user_path(current_user), class:"pull-right" do %>
+      <span class="glyphicon glyphicon-edit" alt="edit"></span>
+    <% end %>
+  </h2>
+</section>
+<section>
+  </br></br>
+  <ul class="list-group">
+    <li class="list-group-item">NAME: &nbsp <%= @user.name %></li>
+    <li class="list-group-item">EMAIL: &nbsp <%= @user.email %></li>
+    <li class="list-group-item">ROLES: &nbsp
+      <% @user.roles.each do |ur| %>
+        <%=   ur.role_name %> &nbsp
       <% end %>
-    </h2>
-  </section>
-  <section>
-    </br></br>
-    <ul class="list-group">
-      <li class="list-group-item">NAME: &nbsp <%= @user.name %></li>
-      <li class="list-group-item">EMAIL: &nbsp <%= @user.email %></li>
-      <li class="list-group-item">ROLES: &nbsp
-        <% @user.roles.each do |ur| %>
-          <%=   ur.role_name %> &nbsp
-        <% end %>
-      </li>
-      <li class="list-group-item">LAST ACCOUNT UPDATE: &nbsp <%= @user.updated_at %></li>
-    </ul>
+    </li>
+    <li class="list-group-item">LAST ACCOUNT UPDATE: &nbsp <%= @user.updated_at %></li>
+  </ul>
 
-  </section>
+</section>
 
-  <%  #@user.inspect %>
+<%  #@user.inspect %>
 
 
 

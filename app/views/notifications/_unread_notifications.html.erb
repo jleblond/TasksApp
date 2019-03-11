@@ -9,15 +9,10 @@
           <span class="glyphicon glyphicon-bell"></span> New Notifications (<%=current_user.notifications.unread.count %>)
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </h4>
-
-
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-
-
-
 
           <% if current_user.notifications.unread.any? %>
               <% current_user.notifications.unread.each do |notification| %>
@@ -33,11 +28,7 @@
                 </div>
               <% end %>
 
-
           <% end %>
-
-
-
 
       </div>
 

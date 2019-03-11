@@ -49,7 +49,7 @@ TasksApp::Application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :user_roles 
+    resources :user_roles
     resources :task_categories
     resources :tasks
   end

@@ -1,13 +1,11 @@
 <h2>Notifications</h2>
 <% if current_user.notifications.any? %>
 
-
   <table class="table table-hover">
     <thead>
     <tr>
       <th scope="col"></th>
       <th scope="col"></th>
-
     </tr>
     </thead>
     <tbody>
@@ -26,15 +24,9 @@
             <span class="glyphicon glyphicon-remove" alt="delete"></span>
           <% end %>
         </td>
-
       </tr>
     <% end %>
-
     </tbody>
   </table>
-
-
-
-
 
 <% end %>
