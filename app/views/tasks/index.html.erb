@@ -15,5 +15,6 @@
 Number of tasks: <%= @tasks.count %>
 </br></br>
 
-<%= render partial: 'shared/tasks_table' %>
-<% # render partial: 'shared/tasks_table', :locals => { :tasks => @tasks} %>
+
+Task assigned
+<%= render partial: 'shared/tasks_table', :locals => { :tasks => @tasks}%>

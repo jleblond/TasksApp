@@ -64,7 +64,12 @@
     </table>
 
   </section>
+</br></br>
 
-  <%  #@user.inspect %>
+<h4>Tasks Assigned</h4>
+<%= render partial: 'shared/tasks_table', :locals => { :tasks => @user.tasks_assigned }%>
+
+<h4>Tasks Authored</h4>
+<%= render partial: 'shared/tasks_table', :locals => { :tasks => @user.tasks_as_author }%>
 
 </div>

@@ -1,4 +1,9 @@
 <h2>Task: <%=  @task.task_name %>
+  <% if @task.status.present? %>
+    <span class="badge badge-light"><%= @task.status.status %></span>
+  <% end %>
+
+
   <% if @author == current_user || current_user.admin? %>
     <%= link_to  edit_task_path(@task), class:"pull-right" do %>
       <span class="glyphicon glyphicon-edit" alt="edit"></span>
@@ -14,12 +19,8 @@
   <div class="panel panel-primary">
     <!-- Default panel contents -->
     <div class="panel-heading">
-      Status: &nbsp&nbsp
-      <%= if @task.status.present?
-            @task.status.status
-          end
-      %>
     </div>
+
     <!-- List group -->
     <ul class="list-group">
       <li class="list-group-item">Created by: &nbsp&nbsp <%=  @task.author.name %> (<%=  @task.author.email %>) </li>
@@ -38,8 +39,16 @@
       </li>
       <li class="list-group-item">Start Date: &nbsp&nbsp <%=     @task.start_date.to_s  %></li>
       <li class="list-group-item">DUE DATE: &nbsp&nbsp <%=     @task.due_date.to_s  %></li>
+      <li class="list-group-item">
+        Status: &nbsp&nbsp
+        <%= if @task.status.present?
+              @task.status.status
+            end
+        %>
+      </li>
 
     </ul>
+
 
     <div class="panel-body">
 
