@@ -1,0 +1,7 @@
+![Screenshot](https://github.com/jleblond/Tasks_App/blob/master/doc/screenshot-1.png)
+![Screenshot](https://github.com/jleblond/Tasks_App/blob/master/doc/screenshot-2.png)
+![Screenshot](https://github.com/jleblond/Tasks_App/blob/master/doc/screenshot-3.png)
+![Screenshot](https://github.com/jleblond/Tasks_App/blob/master/doc/screenshot-4.png)
+![Screenshot](https://github.com/jleblond/Tasks_App/blob/master/doc/screenshot-5.png)
+![Screenshot](https://github.com/jleblond/Tasks_App/blob/master/doc/screenshot-6.png)
+![Screenshot](https://github.com/jleblond/Tasks_App/blob/master/doc/screenshot-7.png)
