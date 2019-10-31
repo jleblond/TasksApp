@@ -17,7 +17,7 @@ gem 'libv8', '3.16.14.3'
 
 gem 'devise'
 
-gem 'haml', '4.0.7'
+gem 'haml', '5.0.0'
 
 gem 'bcrypt'
 # gem 'faker', '1.0.1'  #populate data
