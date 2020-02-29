@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.16'
 
-gem 'rake', '10.5.0'
+gem 'rake', '12.3.3'
 gem 'rack-cache', '1.7.1'
 gem 'nokogiri', '1.6.8'
 gem 'websocket', '1.2.4'
