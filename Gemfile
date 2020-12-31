@@ -4,7 +4,7 @@ gem 'rails', '3.2.16'
 
 gem 'rake', '10.5.0'
 gem 'rack-cache', '1.7.1'
-gem 'nokogiri', '1.6.8'
+gem 'nokogiri', '1.10.10'
 gem 'websocket', '1.2.4'
 # sgem 'rb-inotify', '0.9.10'
 
